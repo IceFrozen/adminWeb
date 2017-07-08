@@ -1,0 +1,97 @@
+<template>
+  <div>
+    <div class="center">
+      <h2 class="vux-title">
+        易和书院 v{{version}}
+      </h2>
+      <p class="vux-notice">正在登陆...</p>
+    </div>
+  </div>
+</template>
+
+<script>
+const version = require('../../../package.json').version
+import { mapState, mapActions } from 'vuex'
+export default {
+  data () {
+    return {
+      version: version
+    }
+  },
+  created () {
+    // try{
+    //   let oldAccount = window.sessionStorage.getItem('account')
+    //   if (oldAccount) {
+    //     this.login(JSON.parse(oldAccount))
+    //     .then(() => {
+    //       return this.$api.get("/wxH5Config")
+    //     })
+    //     .then((res) => {
+    //       this.$wechat.config(res.data)
+    //       return new Promise((resolve) => {
+    //         this.$wechat.ready(() => {
+    //           resolve()
+    //         })
+    //       })
+    //     })
+    //     .then(() => this.$router.replace("/home"))
+    //     .catch(() => {
+    //       window.sessionStorage.removeItem('account')
+    //     })
+    //     return
+    //   }
+    // }
+    // catch (e) {
+    //   console.error(e)
+    //   window.sessionStorage.removeItem('account')
+    //   console.log("drop bad account info")
+    // }
+
+    // 没有用户信息，跳转到微信授权页
+    let appid = 'wx805f60be1812cff6'
+    let redirectUri = encodeURIComponent('http://wx.mahjong.haowan98.com/')
+    let url = `/https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=mahjong#wechat_redirect`
+    // this.$router.push(url)
+    // url = 'http://www.baidu.com'
+    // alert(url)
+    this.$router.push(url)
+  },
+  methods: {
+    ...mapActions(["login"])
+  },
+  computed: {
+    ...mapState({
+      state: state => state,
+      route: state => state.route,
+      path: state => state.route.path
+    })
+  }
+}
+</script>
+
+<style lang="less" scoped>
+.center {
+  margin-top: 15px;
+  text-align: center;
+}
+.vux-notice {
+  color: #666;
+  line-height: 0px;
+}
+.demo-icon {
+  margin-right: 15px;
+}
+.vux-title {
+  vertical-align: middle;
+  text-align: center;
+  color: #04BE02;
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+}
+body {
+  font-family: Helvetica, sans-serif;
+  background-color: #fbf9fe;
+}
+</style>
