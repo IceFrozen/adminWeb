@@ -1,14 +1,15 @@
 <template>
   <div class="">
     <swiper :list="swiperImgs" :auto="true" :loop="true"></swiper>
-     <card :header="{title:'我的功能'}">
-      <div v-for="a in 4" slot="content" class="card-demo-flex card-demo-content01">
-        <flexbox :gutter="0" v-for="(list, index) in components" :key="index">
-        <flexbox-item :span="1/3" v-for="component in list" :key="component.name" class="cbox vux-1px-t vux-tap-active" @click.native="go(component.name.toLowerCase())">
+     <card :header="{title:'我的功能'}" style="margin-top: 0px;">
+      <div  v-for="c in 9"slot="content" class="card-demo-flex card-demo-content01">
+        <flexbox :gutter="0" :key="a">
+        <flexbox-item :span="1/3" v-for="c in 3" key="aaaa" class="cbox vux-1px-t vux-tap-active">
           <div class="vux-1px-r cbox-inner">
-            <span class="demo-icon demo-icon-big" v-html="component.icon" :style="{color: component.color}"></span>
+           <!--  <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
+              <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;">
             <br>
-            <span :style="{fontSize: component.name.length > 12 ? '12px' : ''}">{{component.name | camelCase}}</span>
+            <span :style="{fontSize: '12px' }">我是字体哇</span>
           </div>
         </flexbox-item>
       </flexbox>
@@ -41,8 +42,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { Group, Cell, Swiper, Qrcode, Divider, Card } from 'vux'
-import { Flexbox, FlexboxItem, VuxComponentListData } from 'vux'
+import { Group, Cell, Swiper, Qrcode, Divider, Card, Flexbox, FlexboxItem, Icon } from 'vux'
 import QRCodeImpl from 'qr.js/lib/QRCode'
 import ErrorCorrectLevel from 'qr.js/lib/ErrorCorrectLevel'
 import Promise from 'bluebird'
@@ -57,7 +57,7 @@ function camelCase (input) {
   return str.slice(0, 1).toUpperCase() + str.slice(1)
 }
 export default {
-  components: { Group, Cell, Swiper, Qrcode, Divider, Card, Flexbox, FlexboxItem },
+  components: { Group, Cell, Swiper, Qrcode, Divider, Card, Flexbox, FlexboxItem, Icon },
   data () {
     return {
       playerLink: '',
@@ -80,7 +80,8 @@ export default {
           title:"老人进阶计划"
         }
       ],
-      imgData:""
+      imgData:"",
+      height: window.innerHeight - 46 - 53
     }
   },
   mounted () {
@@ -151,6 +152,9 @@ export default {
       links: state => state.user.linkList
     })
   },
+  filters: {
+    camelCase
+  },
   methods: {
     ...mapActions({
       getLinkList: 'getLinkList'
@@ -208,7 +212,10 @@ function loadImage(src,byproxy) {
   display: flex;
 }
 .card-demo-content01 {
-  padding: 10px 0;
+  background-color: #fff;
+  width: 100%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 .card-padding {
   padding: 15px;
@@ -220,5 +227,10 @@ function loadImage(src,byproxy) {
 }
 .card-demo-flex span {
   color: #f74c31;
+}
+.cbox-inner {
+  padding: 15px 0;
+  width: 100%;
+  height: 100%;
 }
 </style>
