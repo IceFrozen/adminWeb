@@ -2,16 +2,43 @@
   <div class="">
     <swiper :list="swiperImgs" :auto="true" :loop="true"></swiper>
      <card :header="{title:'我的功能'}" style="margin-top: 0px;">
-      <div  v-for="c in 9"slot="content" class="card-demo-flex card-demo-content01">
-        <flexbox :gutter="0" :key="a">
-        <flexbox-item :span="1/3" v-for="c in 3" key="aaaa" class="cbox vux-1px-t vux-tap-active">
+      <div slot="content" class="card-demo-flex card-demo-content01">
+        <flexbox :gutter="0">
+        <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
           <div class="vux-1px-r cbox-inner">
            <!--  <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
+             <!--  <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;"> -->
+             <router-link to="home/yixue" style="color: #000000"><i class="fa fa-heartbeat fa-5x"></i></router-link>
+            <br>
+            <!-- <span :style="{fontSize: '12px' }">医</span> -->
+          </div>
+        </flexbox-item>
+          <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
+          <div class="vux-1px-r cbox-inner" >
+           <!--  <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
+             <!--  <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;"> -->
+             <router-link to="home/yixue" style="color: #000000"><i class="fa fa-heartbeat fa-5x"></i></router-link>
+            <br>
+            <!-- <span :style="{fontSize: '12px' }">医</span> -->
+          </div>
+        </flexbox-item>
+          <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
+          <div class="vux-1px-r cbox-inner">
+           <!--  <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
+             <!--  <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;"> -->
+             <router-link to="home/yixue" style="color: #000000"><i class="fa fa-heartbeat fa-5x"></i></router-link>
+            <br>
+            <!-- <span :style="{fontSize: '12px' }">医</span> -->
+          </div>
+        </flexbox-item>
+        <!--   <flexbox-item :span="1/3"  key="aaaa" class="cbox vux-1px-t vux-tap-active">
+          <div class="vux-1px-r cbox-inner">
               <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;">
+             <i class="fa fa-camera-retro fa-4x"></i>
             <br>
             <span :style="{fontSize: '12px' }">我是字体哇</span>
           </div>
-        </flexbox-item>
+        </flexbox-item> -->
       </flexbox>
       </div>
     </card>
@@ -27,12 +54,12 @@
           $store.state.user.sellerInfo.id"
           :value="$store.state.user.sellerInfo.level">
       </cell>
-    </group>
-    <group title="推广链接（点击进入后，点右上角，“分享给微信好友”）">
+    </group>-->
+  <!--   <group title="推广链接（点击进入后，点右上角，“分享给微信好友”）">
       <cell title="我的子代理邀请链接" inline-desc="用此邀请链接的`新`用户，将成为您的子代理" is-link @click.native="shareLink('seller',links.sellers[0].id)"></cell>
       <cell title="游戏下载地址" inline-desc='用此下载地址`首次`下载游戏的玩家，充值会给您返点' is-link @click.native="shareLink('player',links.players[0].id)"></cell>
-    </group> -->
-    <group title="游戏下载二维码,用此二维码`首次`下载游戏的玩家，充值会给您返点">
+    </group>  -->
+    <group title="关注微信公众号" align="center">
       <div style="text-align:center;margin-top:15px;">
         <img style="width:160px;height:160px;" id="demo_img" :src="imgData"/>
       </div>
@@ -43,9 +70,9 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import { Group, Cell, Swiper, Qrcode, Divider, Card, Flexbox, FlexboxItem, Icon } from 'vux'
-import QRCodeImpl from 'qr.js/lib/QRCode'
-import ErrorCorrectLevel from 'qr.js/lib/ErrorCorrectLevel'
-import Promise from 'bluebird'
+// import QRCodeImpl from 'qr.js/lib/QRCode'
+// import ErrorCorrectLevel from 'qr.js/lib/ErrorCorrectLevel'
+// import Promise from 'bluebird'
 
 function camelCase (input) {
   let str = input.toLowerCase().replace(/-(.)/g, function (match, group1) {
@@ -80,32 +107,34 @@ export default {
           title:"老人进阶计划"
         }
       ],
-      imgData:"",
+      imgData:require("../../assets/qrbg.png"),
       height: window.innerHeight - 46 - 53
     }
   },
   mounted () {
-    console.log(this.$store.state)
-    var linkId = this.links.sellers[0].id
-    linkId = "aaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    var link,title,desc,imgUrl
-    title = "地地道道的任丘麻将，快来玩吧！"
-    desc = `原汁原味的任丘本地麻将，快来跟 < ${this.$store.state.user.playerInfo.wxNickname} > 一起玩吧`
-    link = `http://wx.mahjong.haowan98.com/static/invitePlayer.html?t=${linkId}`
-    imgUrl = 'http://wx.mahjong.haowan98.com/static/icon_1024.png'
-    var config = {
-      title,
-      link,
-      desc,
-      imgUrl,
-      complete: () => {
-        this.$vux.alert.hide()
-      },
-      fail:(err) => {
-        alert(err)
-      }
-    }
-    this.$wechat.onMenuShareAppMessage(config)
+    return
+    // console.log(this.$store.state)
+    // var linkId = this.links.sellers[0].id
+    // linkId = "aaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    // var link,title,desc,imgUrl
+    // title = "地地道道的任丘麻将，快来玩吧！"
+    // desc = `原汁原味的任丘本地麻将，快来跟 < ${this.$store.state.user.playerInfo.wxNickname} > 一起玩吧`
+    // let link = "http://192.168.2.102"
+    // imgUrl = 'http://wx.mahjong.haowan98.com/static/icon_1024.png'
+    // var config = {
+    //   title,
+    //   link,
+    //   desc,
+    //   imgUrl,
+    //   complete: () => {
+    //     this.$vux.alert.hide()
+    //   },
+    //   fail:(err) => {
+    //     alert(err)
+    //   }
+    // }
+    // this.$wechat.onMenuShareAppMessage(config)
+    /*
     this.$wechat.onMenuShareTimeline(config)
     const qrcode = new QRCodeImpl(-1, ErrorCorrectLevel['H'])
     qrcode.addData(link)
@@ -146,6 +175,7 @@ export default {
     .catch(e => {
       console.error(e)
     })
+    */
   },
   computed: {
     ...mapState({
@@ -160,51 +190,51 @@ export default {
       getLinkList: 'getLinkList'
     }),
     shareLink(type,linkId) {
-      var link,title,desc,imgUrl
-      if(type === 'player') {
-        title = "地地道道的任丘麻将，快来玩吧！"
-        desc = `原汁原味的任丘本地麻将，快来跟 < ${this.$store.state.user.playerInfo.wxNickname} > 一起玩吧`
-        link = `http://wx.mahjong.haowan98.com/static/invitePlayer.html?t=${linkId}`
-      }
-      else{
-        title = "推广麻将，在家赚钱！"
-        desc = `只需要一部手机就能在家兼职赚钱!快来跟 < ${this.$store.state.user.playerInfo.wxNickname} > 一起赚吧`
-        link = `http://wx.mahjong.haowan98.com/static/inviteSeller.html?t=${linkId}`
-      }
-      imgUrl = 'http://wx.mahjong.haowan98.com/static/icon_1024.png'
-      var config = {
-        title,
-        link,
-        desc,
-        imgUrl,
-        complete: () => {
-          this.$vux.alert.hide()
-        },
-        fail:(err) => {
-          alert(err)
-        }
-      }
-      // alert(JSON.stringify(config))
-      this.$wechat.onMenuShareAppMessage(config)
-      this.$wechat.onMenuShareTimeline(config)
-      this.$vux.alert.show({
-        title:"点击右上角，分享给好友"
-      })
+      // var link,title,desc,imgUrl
+      // if(type === 'player') {
+      //   title = "地地道道的任丘麻将，快来玩吧！"
+      //   desc = `原汁原味的任丘本地麻将，快来跟 < ${this.$store.state.user.playerInfo.wxNickname} > 一起玩吧`
+      //   link = `http://wx.mahjong.haowan98.com/static/invitePlayer.html?t=${linkId}`
+      // }
+      // else{
+      //   title = "推广麻将，在家赚钱！"
+      //   desc = `只需要一部手机就能在家兼职赚钱!快来跟 < ${this.$store.state.user.playerInfo.wxNickname} > 一起赚吧`
+      //   link = `http://wx.mahjong.haowan98.com/static/inviteSeller.html?t=${linkId}`
+      // }
+      // imgUrl = 'http://wx.mahjong.haowan98.com/static/icon_1024.png'
+      // var config = {
+      //   title,
+      //   link,
+      //   desc,
+      //   imgUrl,
+      //   complete: () => {
+      //     this.$vux.alert.hide()
+      //   },
+      //   fail:(err) => {
+      //     alert(err)
+      //   }
+      // }
+      // // alert(JSON.stringify(config))
+      // this.$wechat.onMenuShareAppMessage(config)
+      // this.$wechat.onMenuShareTimeline(config)
+      // this.$vux.alert.show({
+      //   title:"点击右上角，分享给好友"
+      // })
     }
   }
 }
 
-function loadImage(src,byproxy) {
-  return new Promise(function(resolve,reject) {
-    var img=new Image()
-    img.onload = () => resolve(img)
-    img.onerror = (err) => reject(err)
-    if(byproxy) {
-      src = src.replace("http://wx.qlogo.cn/","/api/wxHeadimg/")
-    }
-    img.src = src
-  })
-}
+// function loadImage(src,byproxy) {
+//   return new Promise(function(resolve,reject) {
+//     var img=new Image()
+//     img.onload = () => resolve(img)
+//     img.onerror = (err) => reject(err)
+//     if(byproxy) {
+//       src = src.replace("http://wx.qlogo.cn/","/api/wxHeadimg/")
+//     }
+//     img.src = src
+//   })
+// }
 </script>
 
 <style lang="less">
@@ -229,7 +259,7 @@ function loadImage(src,byproxy) {
   color: #f74c31;
 }
 .cbox-inner {
-  padding: 15px 0;
+  padding: 32.5px 0;
   width: 100%;
   height: 100%;
 }

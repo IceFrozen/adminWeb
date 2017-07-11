@@ -145,8 +145,8 @@ export default {
     tabbar () {
       var list = [
         {path:'/home',icon:'home',label:"首页",selected:/^\/home$/i},
-        {path:'/home/seller/list',icon:'group',label:"我的推广员",selected:/^\/home\/seller/i},
-        {path:'/home/player/list',icon:'gamepad',label:"我的玩家",selected:/^\/home\/player/i}
+        // {path:'/home/seller/list',icon:'group',label:"我的推广员",selected:/^\/home\/seller/i},
+        {path:'/home/player/details',icon:'user-circle',label:"我",selected:/^\/home\/player/i}
       ]
       if(this.$store.state.user.adminInfo.isAdmin) {
         list.push({path:'/home/admin',icon:'wrench',label:"至高无上管理员",selected:/^\/home\/admin/i})

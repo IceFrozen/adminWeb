@@ -12,6 +12,7 @@ import ApplyList from '@/views/seller/ApplyList'
 import PlayerList from '@/views/player/List'
 import PlayerDetails from '@/views/player/Details'
 import AdminDashboard from '@/views/admin/Dashboard'
+import YiXueDashboard from '@/views/yixue/index'
 Vue.use(Router)
 
 export default new Router({
@@ -34,7 +35,7 @@ export default new Router({
       path: 'player/list',
       component: PlayerList
     }, {
-      path: 'player/details/:id',
+      path: 'player/details',
       component: PlayerDetails
     }, {
       path: 'seller/CashRebate',
@@ -45,6 +46,9 @@ export default new Router({
     }, {
       path: 'admin',
       component: AdminDashboard
+    }, {
+      path: 'yixue',
+      component: YiXueDashboard
     }]
   }, {
     path: '/login',
