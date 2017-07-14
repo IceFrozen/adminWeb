@@ -14,7 +14,8 @@ export default {
     id: null,
     accessToken: null,
     coin: 0,
-    playerInfo: null
+    playerInfo: null,
+    userinfo:null
   },
   mutations: {
     [USER_SIGNIN] (state, user) {
@@ -32,11 +33,10 @@ export default {
       commit('updateLoadingStatus', {isLoading: true})
       window.sessionStorage.setItem("account",JSON.stringify({id:user.id,accessToken:user.accessToken}))
       let info = (await Vue.api.get("/users/me?access_token="+user.accessToken)).data
-      user.coin = info.coin
-      let playerInfo = (await Vue.api.get("/users/me/wxInfo?access_token="+user.accessToken)).data
+      user.userinfo = info
+      let playerInfo = (await Vue.api.get("/users/me/wxInfo?access_token="+user.accessToken,)).data
       user.playerInfo = playerInfo
       commit(USER_SIGNIN, user)
-
       // await Promise.map(["getSellerList","getLinkList","getSellerInfo","getAdminInfo","getPlayerList"],(type) => dispatch(type))
       await Promise.map(["getSellerInfo","getPlayerList"],(type) => dispatch(type))
       commit('updateLoadingStatus', {isLoading: false})
@@ -44,6 +44,20 @@ export default {
     logout ({commit}) {
       window.sessionStorage.removeItem("account")
       commit(USER_SIGNOUT)
+    },
+    async updateUserInfo ({commit, rootStore,dispatch}, userinfo) {
+      try{
+        commit('updateLoadingStatus', {isLoading: true})
+        let user = (await Vue.api.post("/users/me/updateInfo",{userinfo})).data
+        let info = (await Vue.api.get("/users/me")).data
+        user.userinfo = info
+        commit(USER_SIGNIN, user)
+        commit('updateLoadingStatus', {isLoading: false})
+        return true
+      }catch(e) {
+        commit('updateLoadingStatus', {isLoading: false})
+        return false
+      }
     }
   },
   modules: {linkList, sellerList, playerList, sellerInfo, adminInfo, sellerDetails, playerDetails}

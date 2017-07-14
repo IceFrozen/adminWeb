@@ -10,7 +10,7 @@
              <!--  <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;"> -->
              <router-link to="home/yixue" style="color: #000000"><i class="fa fa-heartbeat fa-5x"></i></router-link>
             <br>
-            <!-- <span :style="{fontSize: '12px' }">医</span> -->
+            <span :style="{fontSize: '12px' }">中医坊</span> 
           </div>
         </flexbox-item>
           <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
@@ -19,7 +19,7 @@
              <!--  <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;"> -->
              <router-link to="home/yixue" style="color: #000000"><i class="fa fa-heartbeat fa-5x"></i></router-link>
             <br>
-            <!-- <span :style="{fontSize: '12px' }">医</span> -->
+            <span :style="{fontSize: '12px' }">医</span>
           </div>
         </flexbox-item>
           <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
@@ -28,7 +28,7 @@
              <!--  <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;"> -->
              <router-link to="home/yixue" style="color: #000000"><i class="fa fa-heartbeat fa-5x"></i></router-link>
             <br>
-            <!-- <span :style="{fontSize: '12px' }">医</span> -->
+            <span :style="{fontSize: '12px' }">医</span>
           </div>
         </flexbox-item>
         <!--   <flexbox-item :span="1/3"  key="aaaa" class="cbox vux-1px-t vux-tap-active">
@@ -112,6 +112,12 @@ export default {
     }
   },
   mounted () {
+    if(this.$store.state.user.userinfo.isSetOk === 0) {
+      this.$vux.alert.show({
+        title:"请完善个人信息"
+      })
+      return this.$router.push("/home/player/details")
+    }
     return
     // console.log(this.$store.state)
     // var linkId = this.links.sellers[0].id
@@ -259,7 +265,7 @@ export default {
   color: #f74c31;
 }
 .cbox-inner {
-  padding: 32.5px 0;
+  padding: 23px 0;
   width: 100%;
   height: 100%;
 }

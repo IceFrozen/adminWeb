@@ -7,16 +7,22 @@
           <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
             <div class="vux-1px-r cbox-inner">
               <router-link to="admin" style="color: #000000"><i class="fa fa-file-text fa-5x"></i></router-link>
+              <br>
+            <span :style="{fontSize: '12px' }">中医坊</span> 
             </div>
           </flexbox-item>
           <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
             <div class="vux-1px-r cbox-inner">
               <router-link to="admin" style="color: #000000"><i class="fa fa-check-square-o fa-5x"></i></router-link>
+              <br>
+            <span :style="{fontSize: '12px' }">中医坊</span> 
             </div>
           </flexbox-item>
           <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
             <div class="vux-1px-r cbox-inner">
               <router-link to="admin" style="color: #000000"><i class="fa fa-bar-chart fa-5x"></i></router-link>
+              <br>
+            <span :style="{fontSize: '12px' }">中医坊</span> 
             </div>
           </flexbox-item>
         </flexbox>
@@ -95,7 +101,7 @@ export default {
   color: #f74c31;
 }
 .cbox-inner {
-  padding: 32.5px 0;
+  padding: 23px 0;
   width: 100%;
   height: 100%;
 }

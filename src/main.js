@@ -8,6 +8,7 @@ import store from './store'
 import FastClick from 'fastclick'
 import api from './plugins/api'
 import lodash from './plugins/lodash'
+import VCharts from 'v-charts'
 
 import { DevicePlugin, ToastPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin, WechatPlugin, AjaxPlugin, XInput } from 'vux'
 
@@ -23,6 +24,7 @@ Vue.use(AjaxPlugin)
 Vue.use(XInput)
 Vue.use(api)
 Vue.use(lodash)
+Vue.use(VCharts)
 
 sync(store, router)
 

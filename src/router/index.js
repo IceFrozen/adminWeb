@@ -10,7 +10,8 @@ import SellerDetails from '@/views/seller/Details'
 import CashRebate from '@/views/seller/CashRebate'
 import ApplyList from '@/views/seller/ApplyList'
 import PlayerList from '@/views/player/List'
-import PlayerDetails from '@/views/player/Details'
+// import PlayerDetails from '@/views/player/Details'
+// import InputPlayer from '@/views/player/Input'
 import AdminDashboard from '@/views/admin/Dashboard'
 import YiXueDashboard from '@/views/yixue/index'
 Vue.use(Router)
@@ -36,7 +37,10 @@ export default new Router({
       component: PlayerList
     }, {
       path: 'player/details',
-      component: PlayerDetails
+      // component: InputPlayer 异步加载
+      component: function (resolve) {
+        require(['../views/player/Input.vue'], resolve)
+      }
     }, {
       path: 'seller/CashRebate',
       component: CashRebate
