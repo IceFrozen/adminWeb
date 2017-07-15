@@ -14,6 +14,8 @@ import PlayerList from '@/views/player/List'
 // import InputPlayer from '@/views/player/Input'
 import AdminDashboard from '@/views/admin/Dashboard'
 import YiXueDashboard from '@/views/yixue/index'
+// import CheckList from '@/views/yixue/check'
+import AlertCheck from '@/views/AlertCheck'
 Vue.use(Router)
 
 export default new Router({
@@ -53,6 +55,15 @@ export default new Router({
     }, {
       path: 'yixue',
       component: YiXueDashboard
+    }, {
+      path: 'AlertCheck',
+      component: AlertCheck,
+      name:"AlertCheck"
+    }, {
+      path: 'checkMyself',
+      component: function (resolve) {
+        require(['../views/yixue/check'], resolve)
+      }
     }]
   }, {
     path: '/login',

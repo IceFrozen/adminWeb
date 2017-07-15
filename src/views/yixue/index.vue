@@ -2,27 +2,27 @@
   <div class="">
     <swiper :list="swiperImgs" :auto="true" :loop="true"></swiper>
      <card :header="{title:'我的服务'}" style="margin-top: 0px;">
-      <div slot="content" class="card-demo-flex card-demo-content01">
-        <flexbox :gutter="0">
+      <div slot="content" class="card-demo-flex card-demo-content01" style="background-color:#f3f3f3">
+        <flexbox :gutter="0" >
           <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
             <div class="vux-1px-r cbox-inner">
-              <router-link to="admin" style="color: #000000"><i class="fa fa-file-text fa-5x"></i></router-link>
+              <router-link to="checkMyself" style="color: #000000"><img class="icon" src="static/images/check.jpg"></img></router-link>
               <br>
-            <span :style="{fontSize: '12px' }">中医坊</span> 
+            <span :style="{fontSize: '12px' }">体质自查</span> 
             </div>
           </flexbox-item>
           <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
             <div class="vux-1px-r cbox-inner">
-              <router-link to="admin" style="color: #000000"><i class="fa fa-check-square-o fa-5x"></i></router-link>
+              <router-link to="admin" style="color: #000000"><img class="icon" src="static/images/up.jpg"></img></router-link>
               <br>
-            <span :style="{fontSize: '12px' }">中医坊</span> 
+            <span :style="{fontSize: '12px' }">自我觉察</span> 
             </div>
           </flexbox-item>
           <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
             <div class="vux-1px-r cbox-inner">
-              <router-link to="admin" style="color: #000000"><i class="fa fa-bar-chart fa-5x"></i></router-link>
+              <router-link to="admin" style="color: #000000"><img class="icon" src="static/images/know.jpg"></img></router-link>
               <br>
-            <span :style="{fontSize: '12px' }">中医坊</span> 
+            <span :style="{fontSize: '12px' }">自我提升</span> 
             </div>
           </flexbox-item>
         </flexbox>
@@ -30,7 +30,7 @@
     </card>
     <group title="关注微信公众号" align="center">
       <div style="text-align:center;margin-top:15px;">
-        <img style="width:160px;height:160px;" id="demo_img" :src="imgData"/>
+        <img style="width:80%;height:80%;" id="demo_img" :src="imgData"/>
       </div>
     </group>
   </div>
@@ -47,24 +47,16 @@ export default {
       playerLink: '',
       sellerLink: '',
       rebateDetailPath:'/home/seller/CashRebate',
+      url:"static/images/check.jpg",
       swiperImgs:[
         {
           url:'javascript:',
-          img:require("../../assets/640-300-1.jpg"),
-          title:"月入百万不是梦"
-        },
-        {
-          url:'javascript:',
-          img:require("../../assets/640-300-2.jpg"),
-          title:"新人提携计划"
-        },
-        {
-          url:'javascript:',
-          img:require("../../assets/640-300-3.jpg"),
-          title:"老人进阶计划"
+          // img:require("../../assets/yixue.png"),
+          img:'static/images/check.jpg',
+          title:"妙手中医"
         }
       ],
-      imgData:require("../../assets/qrbg.png"),
+      imgData:'static/images/ecoode.jpg',
       height: window.innerHeight - 46 - 53
     }
   },
@@ -104,5 +96,11 @@ export default {
   padding: 23px 0;
   width: 100%;
   height: 100%;
+}
+.icon {
+  // width: 50px;
+  height: 50px;
+  margin-top: 0px;
+  border: 2px solid #ececec;
 }
 </style>

@@ -7,6 +7,7 @@ import playerList from './user/player.list'
 import playerDetails from './user/player.details'
 import sellerInfo from './user/sellerInfo'
 import adminInfo from './user/adminInfo'
+import Check from './yixue/check'
 import Promise from 'bluebird'
 
 export default {
@@ -60,5 +61,5 @@ export default {
       }
     }
   },
-  modules: {linkList, sellerList, playerList, sellerInfo, adminInfo, sellerDetails, playerDetails}
+  modules: {linkList,Check, sellerList, playerList, sellerInfo, adminInfo, sellerDetails, playerDetails}
 }
