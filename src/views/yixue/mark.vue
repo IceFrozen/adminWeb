@@ -2,14 +2,14 @@
   <div style="height: 100px">
     <blur :blur-amount=10 :url="url" :height="120">
       <p class="center"><img :src="url"></p>
-      <p class="center_2">"asdfasdfasdf"</p>
+      <p class="center_2">功课打卡</p>
     </blur>
     <cell  disabled readonly  primary="content" value-align="left" style='display:block;word-break: break-all;word-wrap: break-word;'>
         "我是说明"
     </cell>
     <div v-for = "time in 1">
       <group>
-        <p class="card-padding" style="align:center;font-size:15px;">第一部分:五禽戏五个动作，哪个动作身体感觉最强烈？</p>
+        <p class="card-padding" style="align:center;font-size:15px;">第一部分:五禽戏</p>
       </group>
       <group class="" v-for="item in lession1" style="padding: 10px;" >
         <div style="text-align:center;border:1px solid rgba(247, 53, 50, 0.3);padding:20px" v-on:click="changeRadio(item,1)">
@@ -24,7 +24,7 @@
     </div>
     <div>
       <group>
-        <p class="card-padding" style="align:center;font-size:15px;">第二部分:六字诀音声训练，哪个与你更同频？</p>
+        <p class="card-padding" style="align:center;font-size:15px;">第二部分:六字诀</p>
       </group>
       <group class="" v-for="item in lession2" style="padding: 10px;">
         <div style="text-align:center;border:1px solid rgba(247, 53, 50, 0.3);padding:20px" v-on:click="changeRadio(item,2)">
@@ -39,7 +39,22 @@
     </div>
     <div>
       <group>
-        <p class="card-padding" style="align:center;font-size:15px;">第三部分:通过妙心圣手中医工作坊第一天对自己的身心觉察，请回答：*</p>
+        <p class="card-padding" style="align:center;font-size:15px;">第三部分:能量自查</p>
+      </group>
+      <group style="padding: 10px;">
+        <div style="text-align:center;border:1px solid rgba(247, 53, 50, 0.3);padding:20px" >
+          <!-- <p style="text-align:center;">
+            <img :src="`static/images/${item.image}`" class="vux-radio-icon" > 
+          </p> -->
+          <p style="text-align:left;margin-top:5px" v-for="item in lession3" v-on:click="changeRadio(item,3)">
+            <check-icon :value="item.isSelect">{{item.name}}</check-icon> 
+          </p> 
+        </div>
+      </group>   
+    </div>
+    <div>
+      <group>
+        <p class="card-padding" style="align:center;font-size:15px;">第四部分:你的自查</p>
       </group>
       <group class="" style="padding: 10px;"  v-for="askitem in askInput " :title="askitem.question">
         <div style="text-align:center;border:1px solid rgba(247, 53, 50, 0.3);padding:20px">
@@ -118,9 +133,8 @@ export default {
       for(let i = 0; i < this[keyName].length; i++) {
         let l = this[keyName][i]
         if(l.name === item.name) {
-          l.isSelect = true
-        }else{
-          l.isSelect = false
+          l.isSelect = !l.isSelect
+          return
         }
       }
     },
@@ -165,9 +179,16 @@ export default {
         {image:"chui.png", name:"chui", desc:"", isSelect:false},
         {image:"he.png", name:"he", desc:"", isSelect:false}
       ],
+      lession3: [
+        {image:"", name:"肝脏能量提升：敲打胆经", desc:"", isSelect:false},
+        {image:"", name:"心脏能量提升：拍打心经", desc:"", isSelect:false},
+        {image:"", name:"脾脏能量提升：五行针灸足三里穴", desc:"", isSelect:false},
+        {image:"", name:"肺脏能量提升：按摩猎取穴", desc:"", isSelect:false},
+        {image:"", name:"肾脏能量提升：五行经络刷刷肾经", desc:"", isSelect:false}
+      ],
       askInput:[
-          {question:"（1）总结近期一个月的身心状态", value:""},
-          {question:"（2）总结近期一个月的身心状态", value:""}
+          {question:"（1）一个月后自查得分及排序", value:""},
+          {question:"（2）一个月后你的身心变化", value:""}
       ],
       demo1: true,
       demo5:"1",
@@ -206,8 +227,5 @@ export default {
 }
 .weui-cell__ft {
   display: none;
-}
-.myicon {
- border-radius: 60%;
 }
 </style>

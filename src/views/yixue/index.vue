@@ -20,7 +20,7 @@
           </flexbox-item>
           <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
             <div class="vux-1px-r cbox-inner">
-              <router-link to="admin" style="color: #000000"><img class="icon" src="static/images/know.jpg"></img></router-link>
+              <router-link to="mark" style="color: #000000"><img class="icon" src="static/images/know.jpg"></img></router-link>
               <br>
             <span :style="{fontSize: '12px' }">自我提升</span> 
             </div>
@@ -101,6 +101,7 @@ export default {
   // width: 50px;
   height: 50px;
   margin-top: 0px;
+  // border-radius: 60%;
   border: 2px solid #ececec;
 }
 </style>

@@ -69,6 +69,11 @@ export default new Router({
       component: function (resolve) {
         require(['../views/yixue/know'], resolve)
       }
+    }, {
+      path: 'mark',
+      component: function (resolve) {
+        require(['../views/yixue/mark'], resolve)
+      }
     }]
   }, {
     path: '/login',
