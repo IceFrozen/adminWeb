@@ -13,7 +13,7 @@
           </flexbox-item>
           <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
             <div class="vux-1px-r cbox-inner">
-              <router-link to="admin" style="color: #000000"><img class="icon" src="static/images/up.jpg"></img></router-link>
+              <router-link to="knowMyself" style="color: #000000"><img class="icon" src="static/images/up.jpg"></img></router-link>
               <br>
             <span :style="{fontSize: '12px' }">自我觉察</span> 
             </div>
@@ -52,8 +52,8 @@ export default {
         {
           url:'javascript:',
           // img:require("../../assets/yixue.png"),
-          img:'static/images/check.jpg',
-          title:"妙手中医"
+          img:'static/images/yixuetop.png',
+          title:"妙心圣手"
         }
       ],
       imgData:'static/images/ecoode.jpg',

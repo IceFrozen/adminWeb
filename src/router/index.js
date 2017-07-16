@@ -64,6 +64,11 @@ export default new Router({
       component: function (resolve) {
         require(['../views/yixue/check'], resolve)
       }
+    }, {
+      path: 'knowMyself',
+      component: function (resolve) {
+        require(['../views/yixue/know'], resolve)
+      }
     }]
   }, {
     path: '/login',
