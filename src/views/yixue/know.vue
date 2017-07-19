@@ -1,13 +1,12 @@
 <template>
   <div style="height: 100px">
-    <blur :blur-amount=10 :url="url" :height="120">
+    <blur :blur-amount=10 :url="background" :height="120">
       <p class="center"><img :src="url"></p>
-      <p class="center_2">"asdfasdfasdf"</p>
+      <p class="center_2">自我觉察</p>
     </blur>
     <cell  disabled readonly  primary="content" value-align="left" style='display:block;word-break: break-all;word-wrap: break-word;'>
-        "我是说明"
     </cell>
-    <div v-for = "time in 1">
+    <div>
       <group>
         <p class="card-padding" style="align:center;font-size:15px;">第一部分:五禽戏五个动作，哪个动作身体感觉最强烈？</p>
       </group>
@@ -85,34 +84,42 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-// import _ from 'lodash'
-import { Flexbox, FlexboxItem, Blur, Group, Cell, Card, Radio, Divider, XButton, CheckIcon, XTextarea } from 'vux'
+import _ from 'lodash'
+import { Blur, Group, Cell, Radio, XButton, CheckIcon, XTextarea } from 'vux'
 export default {
   components: {
     Blur,
-    Flexbox,
-    FlexboxItem,
     Cell,
-    Card,
     Group,
     Radio,
-    Divider,
     XButton,
     CheckIcon,
     XTextarea
   },
   async mounted () {
-    // await this.getQuestion()
+    await this.getCheckInfo('know')
+    let self = this
+    this.know.lession1.map(k => {
+      let select = _.find(self.lession1,{name:k})
+      if(select) {
+        select.isSelect = true
+      }
+    })
+    this.know.lession2.map(k => {
+      let select = _.find(self.lession1,{name:k})
+      if(select) {
+        select.isSelect = true
+      }
+    })
   },
   computed: {
     ...mapState({
-      AskInfo: state => state.user.Check.AskInfo,
-      Groups: state => state.user.Check.Groups
+      know: state => state.user.Mark.know
     })
   },
   filters: {},
   methods: {
-    ...mapActions(['getQuestion',"complateGroupFen","submitCheck"]),
+    ...mapActions(["getCheckInfo","subMission"]),
     changeRadio (item,key) {
       let keyName = 'lession'+ key
       for(let i = 0; i < this[keyName].length; i++) {
@@ -125,55 +132,65 @@ export default {
       }
     },
     async submitInfo () {
-      // 提交信息
-      // 判断有没有填入的
-      for(let i =0; i < this.Groups.length; i++) {
-        let group = this.Groups[i]
-        for(let j = 0; j < group.questions.length; j++) {
-          let q = group.questions[j]
-          if(!q.select) {
-            return this.$vux.alert.show({
-              content: `第${group.index}组的第${q.index}题没有填写`
-            })
-          }
+      // 查看信息
+      let input = {
+        type:"know",
+        lession1 : [],
+        lession2 : [],
+        lession3 : []
+      }
+      for(let i =0; i < this.lession1.length; i++) {
+        if(this.lession1[i].isSelect === true) {
+          input.lession1.push(this.lession1[i].name)
         }
       }
-      // 提交表单
-      let ret = await this.submitCheck()
+      for(let i =0; i < this.lession2.length; i++) {
+        if(this.lession2[i].isSelect === true) {
+          input.lession2.push(this.lession2[i].name)
+        }
+      }
+      if(input.lession1.length === 0 || input.lession2.length === 0) {
+        return
+      }
+      let tmp = []
+      this.askInput.map(a => {
+        if(a.value) {
+          tmp.push(a)
+        }
+      })
+      input.askInput = tmp
+      let ret = await this.subMission(input)
       this.$router.push({name: 'AlertCheck', params: {ret}})
     }
   },
   data () {
     return {
-      images: [
-        'https://o3e85j0cv.qnssl.com/tulips-1083572__340.jpg',
-        'https://o3e85j0cv.qnssl.com/waterway-107810__340.jpg',
-        'https://o3e85j0cv.qnssl.com/hot-chocolate-1068703__340.jpg'
-      ],
-      // lession: [ "lu","hu","xiong","hou","niao" ],
+      // images: [
+      //   'https://o3e85j0cv.qnssl.com/tulips-1083572__340.jpg',
+      //   'https://o3e85j0cv.qnssl.com/waterway-107810__340.jpg',
+      //   'https://o3e85j0cv.qnssl.com/hot-chocolate-1068703__340.jpg'
+      // ],
       lession1: [
-        {image:"hu.jpg", name:"hu", desc:"", isSelect:false},
-        {image:"lu.jpg", name:"lu", desc:"", isSelect:false},
-        {image:"hou.jpg", name:"hou", desc:"", isSelect:false},
-        {image:"xiong.jpg", name:"xiong", desc:"", isSelect:false},
-        {image:"niao.jpg", name:"niao", desc:"", isSelect:false}
+        {image:"hu.jpg", name:"1_hu", desc:"", isSelect:false},
+        {image:"lu.jpg", name:"1_lu", desc:"", isSelect:false},
+        {image:"hou.jpg", name:"1_hou", desc:"", isSelect:false},
+        {image:"xiong.jpg", name:"1_xiong", desc:"", isSelect:false},
+        {image:"niao.jpg", name:"1_niao", desc:"", isSelect:false}
       ],
       lession2: [
-        {image:"xi.png", name:"xi", desc:"", isSelect:false},
-        {image:"hu.png", name:"hu", desc:"", isSelect:false},
-        {image:"xixi.png", name:"xixi", desc:"", isSelect:false},
-        {image:"chui.png", name:"chui", desc:"", isSelect:false},
-        {image:"he.png", name:"he", desc:"", isSelect:false}
+        {image:"xi.png", name:"2_xi", desc:"", isSelect:false},
+        {image:"hu.png", name:"2_hu", desc:"", isSelect:false},
+        {image:"xixi.png", name:"2_xixi", desc:"", isSelect:false},
+        {image:"chui.png", name:"2_chui", desc:"", isSelect:false},
+        {image:"he.png", name:"2_he", desc:"", isSelect:false}
       ],
+      lession3: [],
       askInput:[
-          {question:"（1）总结近期一个月的身心状态", value:""},
-          {question:"（2）总结近期一个月的身心状态", value:""}
+        {key:"4_1", question:"（1）总结近期一个月的身心状态", value:""},
+        {key:"4_2", question:"（2）本次工作坊重点关注和解决的问题", value:""}
       ],
-      demo1: true,
-      demo5:"1",
-      url: 'https://o3e85j0cv.qnssl.com/tulips-1083572__340.jpg',
-      objectList: [{key: '1', value: '分数'}, {key: '2', value: '002 value'}, {key: '3', value: '003 value'}],
-      objectListValue:null
+      url: 'static/images/logo.jpg',
+      background: 'static/images/bg.jpg'
     }
   }
 }
@@ -208,6 +225,6 @@ export default {
   display: none;
 }
 .myicon {
- border-radius: 60%;
+ // border-radius: 60%;
 }
 </style>

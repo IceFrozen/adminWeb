@@ -2,10 +2,11 @@
   <div class="">
     <swiper :list="swiperImgs" :auto="true" :loop="true"></swiper>
      <card :header="{title:'我的功能'}" style="margin-top: 0px;">
-      <div slot="content" class="card-demo-flex card-demo-content01" style="background-color:#f3f3f3">
+      <div slot="content" class="card-demo-flex card-demo-content01" >
         <flexbox :gutter="0">
-        <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
+        <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active" >
           <div class="vux-1px-r cbox-inner">
+          <!--  style="background-color:#f3f3f3" -->
            <!--  <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
              <!--  <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;"> -->
              <router-link to="home/yixue" style="color: #000000"><i class="fa fa-heartbeat fa-5x"></i></router-link>
@@ -13,22 +14,12 @@
             <span :style="{fontSize: '12px' }">中医坊</span> 
           </div>
         </flexbox-item>
-          <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
+        <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
           <div class="vux-1px-r cbox-inner" >
-           <!--  <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
-             <!--  <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;"> -->
-             <router-link to="home/yixue" style="color: #000000"><i class="fa fa-heartbeat fa-5x"></i></router-link>
+            <!--  <router-link to="home/yixue" style="color: #000000"></router-link> -->
+             <i class="fa fa-volume-up fa-5x"></i>
             <br>
-            <span :style="{fontSize: '12px' }">医</span>
-          </div>
-        </flexbox-item>
-          <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
-          <div class="vux-1px-r cbox-inner">
-           <!--  <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
-             <!--  <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;"> -->
-             <router-link to="home/yixue" style="color: #000000"><i class="fa fa-heartbeat fa-5x"></i></router-link>
-            <br>
-            <span :style="{fontSize: '12px' }">医</span>
+            <span :style="{fontSize: '12px' }">公告</span>
           </div>
         </flexbox-item>
         <!--   <flexbox-item :span="1/3"  key="aaaa" class="cbox vux-1px-t vux-tap-active">
@@ -94,17 +85,17 @@ export default {
         {
           url:'javascript:',
           img:"static/images/check.jpg",
-          title:"中医坊1"
+          title:"中医坊"
         },
         {
           url:'javascript:',
           img:"static/images/check.jpg",
-          title:"中医坊2"
+          title:"妙心圣手"
         },
         {
           url:'javascript:',
           img:"static/images/check.jpg",
-          title:"中医坊3"
+          title:"中医坊"
         }
       ],
       imgData:"static/images/ecoode.jpg",
@@ -185,7 +176,7 @@ export default {
   },
   computed: {
     ...mapState({
-      links: state => state.user.linkList
+      // links: state => state.user.linkList
     })
   },
   filters: {
@@ -193,7 +184,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      getLinkList: 'getLinkList'
+      // getLinkList: 'getLinkList'
     }),
     shareLink(type,linkId) {
       // var link,title,desc,imgUrl
@@ -262,7 +253,7 @@ export default {
   font-size: 12px;
 }
 .card-demo-flex span {
-  color: #f74c31;
+  // color: #f74c31;
 }
 .cbox-inner {
   padding: 23px 0;

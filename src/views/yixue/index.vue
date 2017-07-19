@@ -6,21 +6,30 @@
         <flexbox :gutter="0" >
           <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
             <div class="vux-1px-r cbox-inner">
-              <router-link to="checkMyself" style="color: #000000"><img class="icon" src="static/images/check.jpg"></img></router-link>
+              <router-link to="checkMyself" style="color: #000000">
+                <!-- <img class="icon" src="static/images/check.jpg"></img> -->
+                <i class="fa fa-get-pocket fa-5x"></i>
+              </router-link>
               <br>
             <span :style="{fontSize: '12px' }">体质自查</span> 
             </div>
           </flexbox-item>
           <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
             <div class="vux-1px-r cbox-inner">
-              <router-link to="knowMyself" style="color: #000000"><img class="icon" src="static/images/up.jpg"></img></router-link>
+              <router-link to="knowMyself" style="color: #000000">
+                <!-- <img class="icon" src="static/images/up.jpg"></img> -->
+                <i class="fa fa-heart fa-5x"></i>
+              </router-link>
               <br>
             <span :style="{fontSize: '12px' }">自我觉察</span> 
             </div>
           </flexbox-item>
           <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
             <div class="vux-1px-r cbox-inner">
-              <router-link to="mark" style="color: #000000"><img class="icon" src="static/images/know.jpg"></img></router-link>
+              <router-link to="mark" style="color: #000000">
+                <!-- <img class="icon" src="static/images/know.jpg"></img> -->
+                <i class="fa fa-line-chart fa-5x"></i>
+              </router-link>
               <br>
             <span :style="{fontSize: '12px' }">自我提升</span> 
             </div>
@@ -90,7 +99,7 @@ export default {
   font-size: 12px;
 }
 .card-demo-flex span {
-  color: #f74c31;
+  // color: #f74c31;
 }
 .cbox-inner {
   padding: 23px 0;

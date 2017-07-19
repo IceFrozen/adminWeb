@@ -13,7 +13,7 @@
         <router-view class="router-view"></router-view>
       </transition>
 
-      <tabbar class="vux-demo-tabbar" icon-class="vux-center" v-show="!isTabbarDemo" slot="bottom">
+      <tabbar class="vux-demo-tabbar" icon-class="vux-center"  slot="bottom">
         <tabbar-item v-for="item in tabbar" :key="item.path" :link="{path:item.path}" :selected="item.selected.test(route.path)">
           <!-- <span class="demo-icon-22" slot="icon" v-html="item.icon"></span> -->
           <i slot="icon" class="fa" :class="'fa-'+item.icon"></i>
@@ -83,7 +83,10 @@ export default {
   },
   watch: {
     path (path) {
-      if (path === '/component/demo') {
+      this.$nextTick(() => {
+        this.box.scrollTop = 0
+      })
+      /* if (path === '/component/demo') {
         this.$router.replace('/demo')
         return
       }
@@ -103,7 +106,7 @@ export default {
         this.$nextTick(() => {
           this.box.scrollTop = 0
         })
-      }
+      } */
     }
   },
   computed: {
@@ -129,18 +132,12 @@ export default {
         if (/component/.test(this.route.path) && parts[2]) return parts[2]
       }
     },
-    isDemo () {
-      return /component|demo/.test(this.route.path)
-    },
-    isTabbarDemo () {
-      return /tabbar/.test(this.route.path)
-    },
     title () {
-      if (this.route.path === '/home') return 'Home'
-      if (this.route.path === '/home/seller/list') return '我的推广员团队'
-      if (this.route.path === '/home/player/list') return '我的玩家'
-      if (this.route.path.indexOf('/home/sellers/details')!==-1) return '推广操作'
-      return this.componentName ? `Demo/${this.componentName}` : 'Demo/~~'
+      // if (this.route.path === '/home') return 'Home'
+      // if (this.route.path === '/home/seller/list') return '我的推广员团队'
+      // if (this.route.path === '/home/player/list') return '我的玩家'
+      // if (this.route.path.indexOf('/home/sellers/details')!==-1) return '推广操作'
+      // return this.componentName ? `Demo/${this.componentName}` : 'Demo/~~'
     },
     tabbar () {
       var list = [
@@ -148,9 +145,9 @@ export default {
         // {path:'/home/seller/list',icon:'group',label:"我的推广员",selected:/^\/home\/seller/i},
         {path:'/home/player/details',icon:'user-circle',label:"我",selected:/^\/home\/player/i}
       ]
-      if(this.$store.state.user.adminInfo.isAdmin) {
-        list.push({path:'/home/admin',icon:'wrench',label:"至高无上管理员",selected:/^\/home\/admin/i})
-      }
+      // if(this.$store.state.user.adminInfo.isAdmin) {
+      //   list.push({path:'/home/admin',icon:'wrench',label:"至高无上管理员",selected:/^\/home\/admin/i})
+      // }
       return list
     }
   }

@@ -13,7 +13,7 @@ import PlayerList from '@/views/player/List'
 // import PlayerDetails from '@/views/player/Details'
 // import InputPlayer from '@/views/player/Input'
 import AdminDashboard from '@/views/admin/Dashboard'
-import YiXueDashboard from '@/views/yixue/index'
+// import YiXueDashboard from '@/views/yixue/index'
 // import CheckList from '@/views/yixue/check'
 import AlertCheck from '@/views/AlertCheck'
 Vue.use(Router)
@@ -54,7 +54,9 @@ export default new Router({
       component: AdminDashboard
     }, {
       path: 'yixue',
-      component: YiXueDashboard
+      component: function (resolve) {
+        require(['../views/yixue/index'], resolve)
+      }
     }, {
       path: 'AlertCheck',
       component: AlertCheck,

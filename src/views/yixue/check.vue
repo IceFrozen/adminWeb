@@ -1,6 +1,6 @@
 <template>
   <div style="height: 100px">
-    <blur :blur-amount=10 :url="url" :height="120">
+    <blur :blur-amount=10 :url="background" :height="120">
       <p class="center"><img :src="url"></p>
       <p class="center_2">{{AskInfo.name}}</p>
     </blur>
@@ -74,7 +74,13 @@ export default {
     XButton
   },
   async mounted () {
-    await this.getQuestion()
+    let ret = await this.getQuestion()
+    if(!ret) {
+      this.$vux.alert.show({
+        content: `问题不存在`
+      })
+      return this.$router.go(-1)
+    }
   },
   computed: {
     ...mapState({
@@ -84,7 +90,6 @@ export default {
     total  () {
       let total = 0
       this.Groups.map(g => {
-        console.log(g.fen)
         total += g.fen
       })
       return total
@@ -121,15 +126,13 @@ export default {
   },
   data () {
     return {
-      images: [
-        'https://o3e85j0cv.qnssl.com/tulips-1083572__340.jpg',
-        'https://o3e85j0cv.qnssl.com/waterway-107810__340.jpg',
-        'https://o3e85j0cv.qnssl.com/hot-chocolate-1068703__340.jpg'
-      ],
-      demo5:"1",
-      url: 'https://o3e85j0cv.qnssl.com/tulips-1083572__340.jpg',
-      objectList: [{key: '1', value: '分数'}, {key: '2', value: '002 value'}, {key: '3', value: '003 value'}],
-      objectListValue:null
+      // images: [
+      //   'https://o3e85j0cv.qnssl.com/tulips-1083572__340.jpg',
+      //   'https://o3e85j0cv.qnssl.com/waterway-107810__340.jpg',
+      //   'https://o3e85j0cv.qnssl.com/hot-chocolate-1068703__340.jpg'
+      // ],
+      url: 'static/images/logo.jpg',
+      background: 'static/images/bg.jpg'
     }
   }
 }

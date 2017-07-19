@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import {USER_SIGNIN, USER_SIGNOUT, UPDATE_USER_COIN} from './consts'
-import linkList from './user/link.list'
-import sellerList from './user/seller.list'
-import sellerDetails from './user/seller.details'
-import playerList from './user/player.list'
-import playerDetails from './user/player.details'
-import sellerInfo from './user/sellerInfo'
-import adminInfo from './user/adminInfo'
+// import linkList from './user/link.list'
+// import sellerList from './user/seller.list'
+// import sellerDetails from './user/seller.details'
+// import playerList from './user/player.list'
+// import playerDetails from './user/player.details'
+// import sellerInfo from './user/sellerInfo'
+// import adminInfo from './user/adminInfo'
+// import Promise from 'bluebird'
 import Check from './yixue/check'
-import Promise from 'bluebird'
+import Mark from './yixue/mark'
 
 export default {
   state: {
@@ -39,7 +40,7 @@ export default {
       user.playerInfo = playerInfo
       commit(USER_SIGNIN, user)
       // await Promise.map(["getSellerList","getLinkList","getSellerInfo","getAdminInfo","getPlayerList"],(type) => dispatch(type))
-      await Promise.map(["getSellerInfo","getPlayerList"],(type) => dispatch(type))
+      // await Promise.map(["getSellerInfo","getPlayerList"],(type) => dispatch(type))
       commit('updateLoadingStatus', {isLoading: false})
     },
     logout ({commit}) {
@@ -61,5 +62,6 @@ export default {
       }
     }
   },
-  modules: {linkList,Check, sellerList, playerList, sellerInfo, adminInfo, sellerDetails, playerDetails}
+  // modules: {linkList,Check, Mark, sellerList, playerList, sellerInfo, adminInfo, sellerDetails, playerDetails}
+  modules: { Check, Mark }
 }

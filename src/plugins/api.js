@@ -1,7 +1,8 @@
 import axios from 'axios'
 import store from '../store'
+var appConfig = require('../appConfig.js')
 let instance = axios.create({
-  baseURL: 'http://wx.mahjong.haowan98.com:3001/api'
+  baseURL: appConfig.baseURL
 })
 // Add a request interceptor
 instance.interceptors.request.use(function (config) {

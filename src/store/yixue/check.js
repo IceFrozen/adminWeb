@@ -35,7 +35,7 @@ export default {
         if(!sitem) {
           return
         }
-        tmp += sitem.score
+        tmp += parseInt(sitem.score)
       })
       group.fen = tmp
     }
@@ -46,7 +46,7 @@ export default {
         commit('updateLoadingStatus', {isLoading: true})
         let AskInfo = (await Vue.api.post("/Questions/getQuestion")).data
         commit("GET_INFO", AskInfo.Ask)
-        console.log("this is AskInfo", AskInfo)
+        // console.log("this is AskInfo", AskInfo)
         commit('updateLoadingStatus', {isLoading: false})
         return true
       }catch(e) {
@@ -88,7 +88,7 @@ export default {
       try{
         store.commit('updateLoadingStatus', {isLoading: true})
         let isSucc = (await Vue.api.post("/Questions/"+askInfo.id+"/subQuestion",{askInfo})).data
-        console.log("isSucc", isSucc)
+        // console.log("isSucc", isSucc)
         store.commit('updateLoadingStatus', {isLoading: false})
         return isSucc
       }catch(e) {

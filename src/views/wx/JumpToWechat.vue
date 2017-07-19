@@ -11,6 +11,7 @@
 
 <script>
 const version = require('../../../package.json').version
+const appConfig = require('../../appConfig.js')
 import { mapState, mapActions } from 'vuex'
 export default {
   data () {
@@ -48,9 +49,17 @@ export default {
     // }
 
     // 没有用户信息，跳转到微信授权页
-    let appid = 'wx805f60be1812cff6'
-    let redirectUri = encodeURIComponent('http://wx.mahjong.haowan98.com/')
+    // let appid = 'wx805f60be1812cff6'
+    // let appid = 'wxe475d3fe30b0ff1b'
+    // let appid = 'wxe6aca4dd8bfab4a9'
+    // let appid = 'wxe475d3fe30b0ff1b'
+    let appid = appConfig.appId
+    let redirectUri = encodeURIComponent(appConfig.redirectUri)
+
     let url = `/https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=mahjong#wechat_redirect`
+    /*
+      https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe475d3fe30b0ff1b&redirect_uri=http://lizhipeng.space&response_type=code&scope=snsapi_login&state=mahjong&connect_redirect=1#wechat_redirect
+    */
     // this.$router.push(url)
     // url = 'http://www.baidu.com'
     // alert(url)
