@@ -15,7 +15,8 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data () {
     return {
-      version: version
+      version: version,
+      code:""
     }
   },
   mounted () {
@@ -23,13 +24,16 @@ export default {
       return this.$router.push('/wx/jumpToWechat')
     }
     let code = this.$route.query['code']
+    if(this.code === code) {
+      return this.$router.replace('/jumpToWechat')
+    }
+    this.code = code
     this.$api.post('users/loginWithWechat', {wxCode: code})
       .then((res) => {
         let data = res.data
         return this.doLogin({
           id: data.userId,
-          accessToken: data.id,
-          coin: data.coin
+          accessToken: data.id
         })
       })
       .then(() => {
@@ -65,7 +69,8 @@ export default {
     ...mapState({
       state: state => state,
       route: state => state.route,
-      path: state => state.route.path
+      path: state => state.route.path,
+      user: state => state.user
     })
   }
 }

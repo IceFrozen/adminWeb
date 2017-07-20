@@ -20,34 +20,6 @@ export default {
     }
   },
   created () {
-    // try{
-    //   let oldAccount = window.sessionStorage.getItem('account')
-    //   if (oldAccount) {
-    //     this.login(JSON.parse(oldAccount))
-    //     .then(() => {
-    //       return this.$api.get("/wxH5Config")
-    //     })
-    //     .then((res) => {
-    //       this.$wechat.config(res.data)
-    //       return new Promise((resolve) => {
-    //         this.$wechat.ready(() => {
-    //           resolve()
-    //         })
-    //       })
-    //     })
-    //     .then(() => this.$router.replace("/home"))
-    //     .catch(() => {
-    //       window.sessionStorage.removeItem('account')
-    //     })
-    //     return
-    //   }
-    // }
-    // catch (e) {
-    //   console.error(e)
-    //   window.sessionStorage.removeItem('account')
-    //   console.log("drop bad account info")
-    // }
-
     let appid = appConfig.appId
     let redirectUri = encodeURIComponent(appConfig.redirectUri)
 

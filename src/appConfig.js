@@ -1,5 +1,5 @@
 module.exports = {
-  appId:"wxe6aca4dd8bfab4a9",
+  appId:"wxe475d3fe30b0ff1b",
   baseURL:"http://60.205.212.200/api",
   redirectUri:"http://60.205.212.200/"
 }
