@@ -20,43 +20,10 @@ export default {
     }
   },
   created () {
-    // try{
-    //   let oldAccount = window.sessionStorage.getItem('account')
-    //   if (oldAccount) {
-    //     this.login(JSON.parse(oldAccount))
-    //     .then(() => {
-    //       return this.$api.get("/wxH5Config")
-    //     })
-    //     .then((res) => {
-    //       this.$wechat.config(res.data)
-    //       return new Promise((resolve) => {
-    //         this.$wechat.ready(() => {
-    //           resolve()
-    //         })
-    //       })
-    //     })
-    //     .then(() => this.$router.replace("/home"))
-    //     .catch(() => {
-    //       window.sessionStorage.removeItem('account')
-    //     })
-    //     return
-    //   }
-    // }
-    // catch (e) {
-    //   console.error(e)
-    //   window.sessionStorage.removeItem('account')
-    //   console.log("drop bad account info")
-    // }
-
-    // 没有用户信息，跳转到微信授权页
-    // let appid = 'wx805f60be1812cff6'
-    // let appid = 'wxe475d3fe30b0ff1b'
-    // let appid = 'wxe6aca4dd8bfab4a9'
-    // let appid = 'wxe475d3fe30b0ff1b'
     let appid = appConfig.appId
     let redirectUri = encodeURIComponent(appConfig.redirectUri)
 
-    let url = `/https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=mahjong#wechat_redirect`
+    let url = `/https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_login&state=mahjong#wechat_redirect`
     /*
       https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe475d3fe30b0ff1b&redirect_uri=http://lizhipeng.space&response_type=code&scope=snsapi_login&state=mahjong&connect_redirect=1#wechat_redirect
     */

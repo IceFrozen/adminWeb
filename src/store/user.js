@@ -36,7 +36,7 @@ export default {
       window.sessionStorage.setItem("account",JSON.stringify({id:user.id,accessToken:user.accessToken}))
       let info = (await Vue.api.get("/users/me?access_token="+user.accessToken)).data
       user.userinfo = info
-      let playerInfo = (await Vue.api.get("/users/me/wxInfo?access_token="+user.accessToken,)).data
+      let playerInfo = (await Vue.api.get("/users/me/wxInfo?access_token="+user.accessToken)).data
       user.playerInfo = playerInfo
       commit(USER_SIGNIN, user)
       // await Promise.map(["getSellerList","getLinkList","getSellerInfo","getAdminInfo","getPlayerList"],(type) => dispatch(type))
