@@ -22,6 +22,9 @@ export default {
     if (!this.$route.query['code'] || !this.$route.query['state']) {
       return this.$router.push('/wx/jumpToWechat')
     }
+    if(this.user.id) {
+      return this.$router.replace('/home')
+    }
     let code = this.$route.query['code']
     this.$api.post('users/loginWithWechat', {wxCode: code})
       .then((res) => {
@@ -32,21 +35,21 @@ export default {
           coin: data.coin
         })
       })
-      .then(() => {
-        return this.$api.get(`/wxH5Config?url=${encodeURIComponent(location.href.split('#')[0])}`)
-      })
-      .then((res) => {
-        console.log("hrconfig",res.data)
-        this.$wechat.config(res.data)
-        return new Promise((resolve) => {
-          this.$wechat.ready(() => {
-            resolve()
-          })
-          this.$wechat.error(() => {
-            this.$api.get(`/wxH5Config?url=${encodeURIComponent(location.href.split('#')[0])}`).then(res => this.$wechat.config(res.data))
-          })
-        })
-      })
+      // .then(() => {
+      //   return this.$api.get(`/wxH5Config?url=${encodeURIComponent(location.href.split('#')[0])}`)
+      // })
+      // .then((res) => {
+      //   console.log("hrconfig",res.data)
+      //   this.$wechat.config(res.data)
+      //   return new Promise((resolve) => {
+      //     this.$wechat.ready(() => {
+      //       resolve()
+      //     })
+      //     this.$wechat.error(() => {
+      //       this.$api.get(`/wxH5Config?url=${encodeURIComponent(location.href.split('#')[0])}`).then(res => this.$wechat.config(res.data))
+      //     })
+      //   })
+      // })
       .then(() => {
         this.$router.replace('/home')
       })
@@ -65,7 +68,8 @@ export default {
     ...mapState({
       state: state => state,
       route: state => state.route,
-      path: state => state.route.path
+      path: state => state.route.path,
+      user: state => state.user
     })
   }
 }
