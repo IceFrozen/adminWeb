@@ -1,7 +1,7 @@
 module.exports = {
   appId:"wxe6aca4dd8bfab4a9",
-  baseURL:"http://lizhipeng.space/api",
-  redirectUri:"http://lizhipeng.space/"
+  baseURL:"http://60.205.212.200/api",
+  redirectUri:"http://60.205.212.200/"
 }
 
 /*
