@@ -51,7 +51,7 @@ export default {
     let appid = appConfig.appId
     let redirectUri = encodeURIComponent(appConfig.redirectUri)
 
-    let url = `/https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_base&state=mahjong#wechat_redirect`
+    let url = `/https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_login&state=mahjong#wechat_redirect`
     /*
     let url = `/https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=mahjong#wechat_redirect`
 
