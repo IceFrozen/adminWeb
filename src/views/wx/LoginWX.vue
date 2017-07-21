@@ -58,7 +58,7 @@ export default {
         this.$router.replace('/home')
       })
       .catch(() => {
-        alert("链接异常，请联系您的推广人员索要正确的推广链接")
+        alert("服务器异常，请重新进入")
         this.$router.replace('/jumpToWechat')
       })
   },
