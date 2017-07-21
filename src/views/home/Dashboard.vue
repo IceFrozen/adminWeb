@@ -11,7 +11,7 @@
              <!--  <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;"> -->
              <router-link to="home/yixue" style="color: #000000"><i class="fa fa-heartbeat fa-5x"></i></router-link>
             <br>
-            <span :style="{fontSize: '12px' }">中医坊</span> 
+            <span :style="{fontSize: '12px' }">妙心圣手</span> 
           </div>
         </flexbox-item>
         <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
@@ -84,18 +84,28 @@ export default {
       swiperImgs:[
         {
           url:'javascript:',
-          img:"static/images/check.jpg",
-          title:"中医坊"
+          img:"static/images/1.jpg",
+          title:""
         },
         {
           url:'javascript:',
-          img:"static/images/check.jpg",
-          title:"妙心圣手"
+          img:"static/images/2.jpg",
+          title:""
         },
         {
           url:'javascript:',
-          img:"static/images/check.jpg",
-          title:"中医坊"
+          img:"static/images/3.jpg",
+          title:""
+        },
+        {
+          url:'javascript:',
+          img:"static/images/4.jpg",
+          title:""
+        },
+        {
+          url:'javascript:',
+          img:"static/images/5.jpg",
+          title:""
         }
       ],
       imgData:"static/images/ecoode.jpg",

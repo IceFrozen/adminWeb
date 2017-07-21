@@ -10,7 +10,7 @@
     <div v-for = "groupInfo in Groups">
       <!-- <p class="card-padding" style="align:center;font-size:15px;">第一部分</p> -->
        <group>
-          <p class="card-padding" style="align:center;font-size:15px;">第一部分:{{groupInfo.name}}</p>
+          <p class="card-padding" style="align:center;font-size:15px;">{{groupInfo.name}}</p>
        </group>
       <group   v-for ="question in groupInfo.questions" :title="question.index +'、'+ question.name" titleColor="#000" labelAlign="left" style='display:block;word-break: break-all;word-wrap: break-word;' >
         <radio 

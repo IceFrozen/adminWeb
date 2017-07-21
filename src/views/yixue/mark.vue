@@ -203,7 +203,7 @@ export default {
         {image:"", key:"3_1", name:"肝脏能量提升：敲打胆经", desc:"", isSelect:false},
         {image:"", key:"3_2", name:"心脏能量提升：拍打心经", desc:"", isSelect:false},
         {image:"", key:"3_3", name:"脾脏能量提升：五行针灸足三里穴", desc:"", isSelect:false},
-        {image:"", key:"3_4", name:"肺脏能量提升：按摩猎取穴", desc:"", isSelect:false},
+        {image:"", key:"3_4", name:"肺脏能量提升：按摩列缺穴", desc:"", isSelect:false},
         {image:"", key:"3_5", name:"肾脏能量提升：五行经络刷刷肾经", desc:"", isSelect:false}
       ],
       askInput:[
