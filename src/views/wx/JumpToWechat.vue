@@ -25,10 +25,6 @@ export default {
 
     let url = `/https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_login&state=mahjong#wechat_redirect`
     /*
-    let url = `/https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=mahjong#wechat_redirect`
-
-    */
-    /*
       https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe475d3fe30b0ff1b&redirect_uri=http://lizhipeng.space&response_type=code&scope=snsapi_login&state=mahjong&connect_redirect=1#wechat_redirect
     */
     // this.$router.push(url)

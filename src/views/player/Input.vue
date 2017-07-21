@@ -10,7 +10,7 @@
     <group title="必填">
       <x-input title="姓名" v-model="name"  ref="myname" name="username" placeholder="请输入姓名" is-type="china-name" :show-clear="false" required></x-input>
       <x-input title="手机号码" v-model="phoneNumber" ref="myphone" name="mobile"  :show-clear="false" placeholder="请输入手机号码" keyboard="number" is-type="china-mobile" required ></x-input>
-      <datetime v-model="birthday_myStr" title="出生年月" :show-clear="false"  ref="mybirthday" required ></datetime>
+      <datetime v-model="birthday_myStr" title="出生年月" :show-clear="false"  :min-year="1940" ref="mybirthday" required ></datetime>
       <x-address title="地址" v-model="addressValue" raw-value :list="addressData" value-text-align="left" label-align="justify" required></x-address>
     </group>
     <group title="选填">
@@ -23,7 +23,7 @@
         </div> -->
       </cell>
       <template v-if="showContent_1 &&　userinfo.isSetOk !==0">
-        <ve-line :data="chartData" :settings="chartSettings" tooltip-visible legend-visible></ve-line>
+       <!--  <ve-line :data="chartData" :settings="chartSettings" tooltip-visible legend-visible></ve-line> -->
       </template>
        <template v-if="showContent_1 && userinfo.isSetOk === 0">
         <span style="color: green">请先绑定</span>
