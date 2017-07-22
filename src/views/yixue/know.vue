@@ -171,18 +171,19 @@ export default {
       //   'https://o3e85j0cv.qnssl.com/hot-chocolate-1068703__340.jpg'
       // ],
       lession1: [
-        {image:"hu.jpg", name:"1_hu", desc:"", isSelect:false},
         {image:"lu.jpg", name:"1_lu", desc:"", isSelect:false},
         {image:"hou.jpg", name:"1_hou", desc:"", isSelect:false},
         {image:"xiong.jpg", name:"1_xiong", desc:"", isSelect:false},
-        {image:"niao.jpg", name:"1_niao", desc:"", isSelect:false}
+        {image:"niao.jpg", name:"1_niao", desc:"", isSelect:false},
+        {image:"hu.jpg", name:"1_hu", desc:"", isSelect:false}
       ],
       lession2: [
-        {image:"xi.png", name:"2_xi", desc:"", isSelect:false},
+        {image:"xu.png", name:"2_he", desc:"", isSelect:false},
+        {image:"he.png", name:"2_he", desc:"", isSelect:false},
         {image:"hu.png", name:"2_hu", desc:"", isSelect:false},
-        {image:"xixi.png", name:"2_xixi", desc:"", isSelect:false},
+        {image:"xi.png", name:"2_xi", desc:"", isSelect:false},
         {image:"chui.png", name:"2_chui", desc:"", isSelect:false},
-        {image:"he.png", name:"2_he", desc:"", isSelect:false}
+        {image:"xixi.png", name:"2_xixi", desc:"", isSelect:false}
       ],
       lession3: [],
       askInput:[

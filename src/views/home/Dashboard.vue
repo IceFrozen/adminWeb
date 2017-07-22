@@ -84,28 +84,28 @@ export default {
       swiperImgs:[
         {
           url:'javascript:',
-          img:"static/images/1.jpg",
-          title:""
+          img:"static/images/5.jpg",
+          title:"易道洗心"
         },
         {
           url:'javascript:',
           img:"static/images/2.jpg",
-          title:""
+          title:"中医养心"
         },
         {
           url:'javascript:',
-          img:"static/images/3.jpg",
-          title:""
+          img:"static/images/1.jpg",
+          title:"儒家正心"
         },
         {
           url:'javascript:',
           img:"static/images/4.jpg",
-          title:""
+          title:"道家静心"
         },
         {
           url:'javascript:',
-          img:"static/images/5.jpg",
-          title:""
+          img:"static/images/3.jpg",
+          title:"禅宗明心"
         }
       ],
       imgData:"static/images/ecoode.jpg",

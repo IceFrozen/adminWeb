@@ -1,7 +1,7 @@
 module.exports = {
   appId:"wxe475d3fe30b0ff1b",
-  baseURL:"http://60.205.212.200/api",
-  redirectUri:"http://60.205.212.200/"
+  baseURL:"http://www.fengyunge.com/api",
+  redirectUri:"http://www.fengyunge.com/"
 }
 
 /*
