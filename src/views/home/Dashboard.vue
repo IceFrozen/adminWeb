@@ -64,7 +64,7 @@ import { Group, Cell, Swiper, Qrcode, Divider, Card, Flexbox, FlexboxItem, Icon 
 // import QRCodeImpl from 'qr.js/lib/QRCode'
 // import ErrorCorrectLevel from 'qr.js/lib/ErrorCorrectLevel'
 // import Promise from 'bluebird'
-
+const appConfig = require('../../appConfig')
 function camelCase (input) {
   let str = input.toLowerCase().replace(/-(.)/g, function (match, group1) {
     return group1.toUpperCase()
@@ -119,30 +119,25 @@ export default {
       })
       return this.$router.push("/home/player/details")
     }
-    return
-    // console.log(this.$store.state)
-    // var linkId = this.links.sellers[0].id
-    // linkId = "aaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    // var link,title,desc,imgUrl
-    // title = "地地道道的任丘麻将，快来玩吧！"
-    // desc = `原汁原味的任丘本地麻将，快来跟 < ${this.$store.state.user.playerInfo.wxNickname} > 一起玩吧`
-    // let link = "http://192.168.2.102"
-    // imgUrl = 'http://wx.mahjong.haowan98.com/static/icon_1024.png'
-    // var config = {
-    //   title,
-    //   link,
-    //   desc,
-    //   imgUrl,
-    //   complete: () => {
-    //     this.$vux.alert.hide()
-    //   },
-    //   fail:(err) => {
-    //     alert(err)
-    //   }
-    // }
-    // this.$wechat.onMenuShareAppMessage(config)
-    /*
+    let title = "易和书院"
+    let desc = `易和书院微信系统`
+    let link = appConfig.redirectUri
+    let imgUrl = `${link}static/images/logo.jpg`
+    let config = {
+      title,
+      link,
+      desc,
+      imgUrl,
+      complete: () => {
+        this.$vux.alert.hide()
+      },
+      fail:(err) => {
+        alert(err)
+      }
+    }
+    this.$wechat.onMenuShareAppMessage(config)
     this.$wechat.onMenuShareTimeline(config)
+    /*
     const qrcode = new QRCodeImpl(-1, ErrorCorrectLevel['H'])
     qrcode.addData(link)
     qrcode.make()

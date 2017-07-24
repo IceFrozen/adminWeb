@@ -17,12 +17,32 @@
       <x-input title="邮箱" name="email" v-model="email"  placeholder="请输入邮箱地址" is-type="email"></x-input>
     </group>
     <group title="成绩汇总">
-      <cell title="医" is-link :border-intent="false" :arrow-direction="showContent_1 ? 'up' : 'down'" @click.native="showContent(1)">
+      <cell title="妙心圣手" is-link :border-intent="false" :arrow-direction="showContent_1 ? 'up' : 'down'" @click.native="showContent(1)">
        <!--  <div slot="value">
           <span style="color: green">单击查看详情</span>
         </div> -->
       </cell>
       <template v-if="showContent_1 &&　userinfo.isSetOk !==0">
+          <div style="padding:0 15px;">
+      <x-table v-if="statistics.check[0]">
+        <thead>
+          <tr>
+            <th>最近体制检查日期</th>
+            <th>{{statistics.check[0].time | dateFormat}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>总分</td>
+            <td>{{statistics.check[0].total}}</td>
+          </tr>
+           <tr v-for="g in statistics.check[0].group">
+            <td>{{g.name}}</td>
+            <td>{{g.fen}}</td>
+          </tr>
+        </tbody>
+      </x-table>
+    </div>
        <!--  <ve-line :data="chartData" :settings="chartSettings" tooltip-visible legend-visible></ve-line> -->
       </template>
        <template v-if="showContent_1 && userinfo.isSetOk === 0">
@@ -44,7 +64,7 @@
 }
 </style>
 <script>
-import { XInput, Group, XButton, Cell, Datetime, Alert, ChinaAddressData, XAddress,dateFormat } from 'vux'
+import { XInput, Group, XButton, Cell, Datetime, Alert, ChinaAddressData, XAddress, dateFormat, XTable } from 'vux'
 import { mapState, mapActions } from 'vuex'
 export default {
   components: {
@@ -54,7 +74,8 @@ export default {
     Cell,
     Datetime,
     Alert,
-    XAddress
+    XAddress,
+    XTable
   },
   data () {
     return {
@@ -72,8 +93,14 @@ export default {
   computed: {
     ...mapState({
       player: state => state.user.playerInfo,
-      userinfo: state => state.user.userinfo
+      userinfo: state => state.user.userinfo,
+      statistics: state => state.user.Statistics
     })
+  },
+  filters:{
+    dateFormat (val) {
+      return dateFormat(new Date(val), 'YYYY-MM-DD HH:mm')
+    }
   },
   mounted() {
     if(this.userinfo.isSetOk === 0) {
