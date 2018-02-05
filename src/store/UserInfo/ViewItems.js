@@ -1,7 +1,9 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 // import _ from 'lodash'
 export default {
   state: {
+    bottomMemu:[],
+    serviceMemu:[]
   },
   mutations: {
     GET_INFO (state) {},
@@ -11,8 +13,8 @@ export default {
     async getViewItem ({commit, rootStore,dispatch}, userinfo) {
       try{
         commit('updateLoadingStatus', {isLoading: true})
-        let AskInfo = (await Vue.api.post("/Questions/getQuestion")).data
-        commit("GET_INFO", AskInfo.Ask)
+        // let MemuInfo = (await Vue.api.post("/userInfo/getMemuInfo")).data
+        // commit("GET_INFO", AskInfo.Ask)
         commit('updateLoadingStatus', {isLoading: false})
         return true
       }catch(e) {

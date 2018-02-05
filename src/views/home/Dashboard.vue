@@ -9,9 +9,9 @@
           <!--  style="background-color:#f3f3f3" -->
            <!--  <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
              <!--  <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;"> -->
-             <router-link to="home/yixue" style="color: #000000"><i class="fa fa-heartbeat fa-5x"></i></router-link>
+             <router-link to="/shuce/NumberTool" style="color: #000000"><i class="fa fa-heartbeat fa-5x"></i></router-link>
             <br>
-            <span :style="{fontSize: '12px' }">妙心圣手</span> 
+            <span :style="{fontSize: '12px' }">数测工具</span> 
           </div>
         </flexbox-item>
         <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
@@ -19,7 +19,15 @@
             <!--  <router-link to="home/yixue" style="color: #000000"></router-link> -->
              <i class="fa fa-volume-up fa-5x"></i>
             <br>
-            <span :style="{fontSize: '12px' }">公告</span>
+            <span :style="{fontSize: '12px' }">暂未开发</span>
+          </div>
+        </flexbox-item> 
+        <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
+          <div class="vux-1px-r cbox-inner" >
+            <!--  <router-link to="home/yixue" style="color: #000000"></router-link> -->
+             <i class="fa fa-volume-up fa-5x"></i>
+            <br>
+            <span :style="{fontSize: '12px' }">暂未开发</span>
           </div>
         </flexbox-item>
         <!--   <flexbox-item :span="1/3"  key="aaaa" class="cbox vux-1px-t vux-tap-active">
@@ -64,7 +72,7 @@ import { Group, Cell, Swiper, Qrcode, Divider, Card, Flexbox, FlexboxItem, Icon 
 // import QRCodeImpl from 'qr.js/lib/QRCode'
 // import ErrorCorrectLevel from 'qr.js/lib/ErrorCorrectLevel'
 // import Promise from 'bluebird'
-const appConfig = require('../../appConfig')
+// const appConfig = require('../../appConfig')
 function camelCase (input) {
   let str = input.toLowerCase().replace(/-(.)/g, function (match, group1) {
     return group1.toUpperCase()

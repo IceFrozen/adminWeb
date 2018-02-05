@@ -36,7 +36,7 @@ export default {
       user.playerInfo = playerInfo
       commit(USER_SIGNIN, user)
       // await Promise.map(["getSellerList","getLinkList","getSellerInfo","getAdminInfo","getPlayerList"],(type) => dispatch(type))
-      await Promise.map(["getAskInfo"],(type) => dispatch(type))
+      await Promise.map(["getViewItem"],(type) => dispatch(type))
       commit('updateLoadingStatus', {isLoading: false})
     },
     logout ({commit}) {
@@ -58,5 +58,5 @@ export default {
       }
     }
   },
-  modules: { Check, Mark, ViewItems, Statistics }
+  modules: { Check, Mark, ViewItems }
 }

@@ -10,7 +10,7 @@ import api from './plugins/api'
 import lodash from './plugins/lodash'
 import VCharts from 'v-charts'
 
-import { DevicePlugin, ToastPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin, WechatPlugin, AjaxPlugin, XInput } from 'vux'
+import { DevicePlugin, ToastPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin, WechatPlugin, AjaxPlugin, XInput, DatetimePlugin } from 'vux'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -25,7 +25,7 @@ Vue.use(XInput)
 Vue.use(api)
 Vue.use(lodash)
 Vue.use(VCharts)
-
+Vue.use(DatetimePlugin)
 sync(store, router)
 
 router.beforeEach(function ({path, meta, fullPath}, from, next) {
@@ -34,6 +34,7 @@ router.beforeEach(function ({path, meta, fullPath}, from, next) {
     window.location.href = fullPath
     return
   }
+  console.log(path)
   let { requiresAuth = true } = meta
   let isLogin = !!store.state.user.id // true用户已登录， false用户未登录
   if (requiresAuth && !isLogin) {

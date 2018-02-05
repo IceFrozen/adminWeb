@@ -5,11 +5,8 @@ import Home from '@/views/Home'
 import Dashboard from '@/views/home/Dashboard'
 import LoginWX from '@/views/wx/LoginWX'
 import JumpToWechat from '@/views/wx/JumpToWechat'
-import SellerList from '@/views/seller/List'
-import SellerDetails from '@/views/seller/Details'
-import CashRebate from '@/views/seller/CashRebate'
-import ApplyList from '@/views/seller/ApplyList'
 import PlayerList from '@/views/player/List'
+import NumberTool from '@/views/shuce/NumberTool'
 // import PlayerDetails from '@/views/player/Details'
 // import InputPlayer from '@/views/player/Input'
 import AdminDashboard from '@/views/admin/Dashboard'
@@ -27,13 +24,8 @@ export default new Router({
     component: Home,
     children: [{
       path: '',
-      component: Dashboard
-    }, {
-      path: 'seller/list',
-      component: SellerList
-    }, {
-      path: 'seller/details/:id',
-      component: SellerDetails
+      component: Dashboard,
+      meta: { requiresAuth: false }
     }, {
       path: 'player/list',
       component: PlayerList
@@ -43,12 +35,6 @@ export default new Router({
       component: function (resolve) {
         require(['../views/player/Input.vue'], resolve)
       }
-    }, {
-      path: 'seller/CashRebate',
-      component: CashRebate
-    },{
-      path: 'seller/ApplyList',
-      component: ApplyList
     }, {
       path: 'admin',
       component: AdminDashboard
@@ -88,6 +74,10 @@ export default new Router({
   }, {
     path: '/wx/jumpToWechat',
     component: JumpToWechat,
+    meta: { requiresAuth: false }
+  }, {
+    path: '/shuce/NumberTool',
+    component: NumberTool,
     meta: { requiresAuth: false }
   }]
 })

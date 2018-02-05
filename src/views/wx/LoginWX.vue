@@ -64,7 +64,6 @@ export default {
   },
   methods: {
     ...mapActions({
-      getLinkList: 'getLinkList',
       doLogin: 'login'
     })
   },

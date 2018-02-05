@@ -12,7 +12,8 @@ export default {
   },
   created () {
   	// TODO 这里做登录操作
-  	console.log(this.$store.state)
+    // console.log(this.$store.state)
+    this.$router.replace('/shuce/NumberTool')
   },
   mount () {
   },
