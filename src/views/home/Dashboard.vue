@@ -103,12 +103,12 @@ export default {
     }
   },
   mounted () {
-    if(this.$store.state.user.userinfo.isSetOk === 0) {
-      this.$vux.alert.show({
-        title:"请完善个人信息"
-      })
-      return this.$router.push("/home/player/details")
-    }
+    // if(this.$store.state.user.userinfo.isSetOk === 0) {
+    //   this.$vux.alert.show({
+    //     title:"请完善个人信息"
+    //   })
+    //   return this.$router.push("/home/player/details")
+    // }
     return
     // console.log(this.$store.state)
     // var linkId = this.links.sellers[0].id

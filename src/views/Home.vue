@@ -4,7 +4,7 @@
       <loading v-model="isLoading"></loading>
     </div>
     <view-box ref="viewBox" body-padding-top="0px" body-padding-bottom="55px">
-     <!--  <x-header slot="header" style="width:100%;position:absolute;left:0;top:0;z-index:100;" :left-options="leftOptions"
+     <!-- 返回等头部 <x-header slot="header" style="width:100%;position:absolute;left:0;top:0;z-index:100;" :left-options="leftOptions"
       :title="title"
       :transition="headerTransition"
       @on-click-title="scrollTop"></x-header> -->
@@ -141,9 +141,9 @@ export default {
     },
     tabbar () {
       var list = [
-        {path:'/home',icon:'home',label:"首页",selected:/^\/home$/i},
+        // {path:'/home',icon:'home',label:"首页",selected:/^\/home$/i}
         // {path:'/home/seller/list',icon:'group',label:"我的推广员",selected:/^\/home\/seller/i},
-        {path:'/home/player/details',icon:'user-circle',label:"我",selected:/^\/home\/player/i}
+        // {path:'/home/player/details',icon:'user-circle',label:"我",selected:/^\/home\/player/i}
       ]
       // if(this.$store.state.user.adminInfo.isAdmin) {
       //   list.push({path:'/home/admin',icon:'wrench',label:"至高无上管理员",selected:/^\/home\/admin/i})
