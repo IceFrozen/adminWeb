@@ -19,6 +19,8 @@ module.exports = {
   'rules': {
     // 放松空格限制
     'keyword-spacing': 0,
+    'no-tabs': 0,
+    'no-mixed-spaces-and-tabs': 0,
     'space-before-function-paren': 0,
     'space-infix-ops': 0,
     'comma-spacing': 0,

@@ -1,3 +1,6 @@
+/*
+  暂时弃用
+*/
 import Vue from 'vue'
 import {GET_ADMIN_INFO_SUCCESS, GET_ADMIN_INFO_FAILD, REQUEST_ADMIN_INFO} from '../consts'
 

@@ -56,15 +56,6 @@ export default {
         store.commit(GET_PLAYER_DETAILS_FAILD)
         throw e
       }
-    },
-    async transferCoinToPlayer (store, num) {
-      await Vue.api.post("/sellerInfos/"+store.rootState.user.id+"/transferCoinToPlayer",{
-        playerId:store.state.id,
-        num:num
-      })
-
-      await store.dispatch('getPlayerDetails',store.state.id)
-      await store.commit(UPDATE_USER_COIN,store.rootState.user.coin - num)
     }
   }
 }

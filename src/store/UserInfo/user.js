@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import {USER_SIGNIN, USER_SIGNOUT, UPDATE_USER_COIN} from './consts'
+import { USER_SIGNIN, USER_SIGNOUT } from '../consts'
 // import linkList from './user/link.list'
 // import sellerList from './user/seller.list'
 // import sellerDetails from './user/seller.details'
@@ -7,16 +7,14 @@ import {USER_SIGNIN, USER_SIGNOUT, UPDATE_USER_COIN} from './consts'
 // import playerDetails from './user/player.details'
 // import sellerInfo from './user/sellerInfo'
 // import adminInfo from './user/adminInfo'
-import Promise from 'bluebird'
-import Check from './yixue/check'
-import Mark from './yixue/mark'
-import Statistics from './yixue/statistics'
-
+// import Promise from 'bluebird'
+import Check from '../yixue/check'
+import Mark from '../yixue/mark'
+import ViewItems from './ViewItems'
 export default {
   state: {
     id: null,
     accessToken: null,
-    coin: 0,
     playerInfo: null,
     userinfo:null
   },
@@ -26,9 +24,6 @@ export default {
     },
     [USER_SIGNOUT] (state) {
       Object.keys(state).forEach(k => Vue.delete(state, k))
-    },
-    [UPDATE_USER_COIN] (state,newCoin) {
-      state.coin = newCoin
     }
   },
   actions: {
@@ -63,6 +58,5 @@ export default {
       }
     }
   },
-  // modules: {linkList,Check, Mark, sellerList, playerList, sellerInfo, adminInfo, sellerDetails, playerDetails}
-  modules: { Check, Mark, Statistics }
+  modules: { Check, Mark, ViewItems, Statistics }
 }

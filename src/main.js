@@ -34,16 +34,10 @@ router.beforeEach(function ({path, meta, fullPath}, from, next) {
     window.location.href = fullPath
     return
   }
-
   let { requiresAuth = true } = meta
   let isLogin = !!store.state.user.id // true用户已登录， false用户未登录
   if (requiresAuth && !isLogin) {
-    if (Vue.device.isWechat) {
-      // 在进入index的时候 进入了这个方法 跳到微信客户端进行获取token操作 当jump完成之后再一次回到这里来
-      return next({ path: '/wx/LoginWX' + location.search })
-    } else {
-      return next({ path: '/login' })
-    }
+    return next({ path: '/login' })
   }
   store.commit('updateLoadingStatus', {isLoading: true})
   store.commit('updateDirection', {direction: 'forward'})
@@ -61,7 +55,6 @@ router.afterEach(function (to) {
 
 
 FastClick.attach(document.body)
-
 
 
 /* eslint-disable no-new */

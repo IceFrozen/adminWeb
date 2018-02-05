@@ -1,3 +1,6 @@
+/*
+  暂时弃用
+*/
 import Vue from 'vue'
 import {GET_LINK_LIST_SUCCESS, GET_LINK_LIST_FAILD, REQUEST_LINK_LIST} from '../consts'
 
