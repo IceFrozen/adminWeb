@@ -1,6 +1,6 @@
 <template>
   <div>
-     <div style="margin: 0px;height: inherit;background: url(static/images/yixuetop.png);">
+     <div style="margin: 0px;height: inherit;background: url(static/images/bgshuce.jpg);">
     {{ datatime }}
       <x-button type="primary" plain @click.native="showPlugin">选择生日</x-button>
     </div>
