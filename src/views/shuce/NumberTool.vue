@@ -13,13 +13,9 @@
       <!--  <x-button type="default" plain @click.native="showPlugin">选择生日</x-button> -->
     <div style="height:25px"></div>
    <flexbox style="">
-      <flexbox-item ><div class="flex-demo" style="margin-top:100px"></div></flexbox-item>
-      <flexbox-item>
-        <div class="flex-demo" v-on:click="showPlugin" >我是生日显示{{datatime}}</div>
-      </flexbox-item>
-      <flexbox-item><div class="flex-demo"></div></flexbox-item>
-     
+      <flexbox-item ><div class="flex-demo" style="margin-top:50px"></div></flexbox-item>
     </flexbox>
+    <div class="flex-demo"  style="margin-left:50px;margin-right:50px"> <x-button type="default" plain @click.native="showPlugin" style=" background: #ffffff;opacity:0.5;">{{datatime==''?'选择生日':datatime}}</x-button> </div>
   <div style="top:10">
     <grid >
       <grid-item link="" style="border-bottom: 0px ">
@@ -81,9 +77,9 @@ export default {
   },
   data () {
     return {
-      datatime:"2017-05-20",
-      first:"1",
-      second:"2"
+      datatime:"",
+      first:"",
+      second:""
     }
   },
   methods: {
@@ -92,7 +88,7 @@ export default {
       this.$vux.datetime.show({
         cancelText: '取消',
         confirmText: '确定',
-        format: 'YYYY-MM-DD',
+        format: 'YYYY年MM月DD日',
         value: '2017-05-20',
         onConfirm (val) {
           self.datatime = val
@@ -140,7 +136,7 @@ export default {
       return this.compulute(dataItems,recursion)
     },
     doAtction (recursion) {
-      let dateString = this.datatime.replace(/-/g,'')
+      let dateString = this.converToNumber(this.datatime)
       if(!dateString) {
         return this.showMessage("请输入生日")
       }
@@ -158,6 +154,9 @@ export default {
         onShow () {},
         onHide () {}
       })
+    },
+    converToNumber (stringDate) {
+      return stringDate.replace(/[^0-9]/ig,"")
     }
   }
 }
