@@ -1,63 +1,73 @@
 <template>
      <div style="margin: 0px;height: inherit;background: url(static/images/bgshuce.jpg);">
-     <grid style="">
+    <!--  <grid style="">
       <grid-item link="/component/cell" style="border-bottom: 0px ">
-       <!--  <img slot="icon" src="../assets/grid_icon.png"> -->
+        <img slot="icon" src="../assets/grid_icon.png">
       </grid-item>
       <grid-item :link="{ path: '/component/cell'}" label="">
-            <x-button type="default" plain @click.native="showPlugin">选择生日</x-button>
+         
       </grid-item>
       <grid-item link="/component/cell">
       </grid-item>
-    </grid>
-  <div style="top:10;background-color:aquamarine">
-  asdfasdf
+    </grid> -->
+      <!--  <x-button type="default" plain @click.native="showPlugin">选择生日</x-button> -->
+    <div style="height:25px"></div>
+   <flexbox style="">
+      <flexbox-item ><div class="flex-demo" style="margin-top:100px"></div></flexbox-item>
+      <flexbox-item>
+        <div class="flex-demo" v-on:click="showPlugin" >我是生日显示{{datatime}}</div>
+      </flexbox-item>
+      <flexbox-item><div class="flex-demo"></div></flexbox-item>
+     
+    </flexbox>
+  <div style="top:10">
     <grid >
-      <grid-item link="/component/cell" style="border-bottom: 0px ">
+      <grid-item link="" style="border-bottom: 0px ">
       </grid-item>
-      <grid-item :link="{ path: '/component/cell'}" label="">
+      <grid-item label="">
           <img src="/static/images/logo.png" style="heigth:100%;width:100%;border-bottom: 0px">
       </grid-item>
-      <grid-item link="/component/cell">
+      <grid-item link="">
       </grid-item>
     </grid>
     <grid>
         <div style="display: table-cell; width: 100%;vertical-align: middle;text-align: center;heigth:100%"> 
           <img src="/static/images/result.png" width="50%" alt="dasdfasdfg"> 
-          <div style="position:absolute;z-indent:2;left:35%;top:15px;"> 数字为</div>
+          <div style="position:absolute;z-indent:2;left:50%;top:15px;"> {{first}}</div>
         </div> 
     </grid>
     <grid>
-      <grid-item link="/component/cell" style="border-bottom: 0px ">
+      <grid-item  style="border-bottom: 0px ">
        <!--  <img slot="icon" src="../assets/grid_icon.png"> -->
       </grid-item>
-      <grid-item :link="{ path: '/component/cell'}" label="">
-          <img src="/static/images/shuce.png" style="heigth:100%;width:100%;border-bottom: 0px">
+      <grid-item  label="">
+          <img src="/static/images/shuce.png" style="heigth:100%;width:100%;border-bottom: 0px" @click="doAtction(false)">
       </grid-item>
-      <grid-item link="/component/cell">
+      <grid-item link="">
       </grid-item>
     </grid>
     <grid>
         <div style="display: table-cell;position: relative; width: 100%;vertical-align: middle;text-align: center;heigth:100%"> 
           <img src="/static/images/result.png" width="50%" alt="dasdfasdfg"> 
-          <div style="position:absolute;z-indent:2;left:35%;top:15px;"> 数字为</div>
+          <div style="position:absolute;z-indent:2;left:50%;top:15px;"> {{second}}</div>
         </div> 
     </grid>
     <grid>
-      <grid-item link="/component/cell" style="border-bottom: 0px ">
+      <grid-item link="" style="border-bottom: 0px ">
        <!--  <img slot="icon" src="../assets/grid_icon.png"> -->
       </grid-item>
-      <grid-item :link="{ path: '/component/cell'}" label="">
-          <img src="/static/images/bggua.png" style="heigth:100%;width:100%;border-bottom: 0px">
+      <grid-item  label="" >
+          <img src="/static/images/bggua.png" style="heigth:100%;width:100%;border-bottom: 0px" @click="doAtction(true)">
       </grid-item>
-      <grid-item link="/component/cell">
+      <grid-item link="">
       </grid-item>
     </grid>
     </div>
   </div>
 </template>
 <script>
-import { Datetime, Group, XButton, Grid, GridItem, XImg } from 'vux'
+import _ from 'lodash'
+import { Datetime, Group, XButton, Grid, GridItem, XImg, Flexbox, FlexboxItem } from 'vux'
 export default {
   components: {
     Datetime,
@@ -65,11 +75,15 @@ export default {
     XButton,
     Grid,
     GridItem,
-    XImg
+    XImg,
+    Flexbox,
+    FlexboxItem
   },
   data () {
     return {
-      datatime:"19700820"
+      datatime:"2017-05-20",
+      first:"1",
+      second:"2"
     }
   },
   methods: {
@@ -82,7 +96,65 @@ export default {
         value: '2017-05-20',
         onConfirm (val) {
           self.datatime = val
+          self.first = ''
+          self.second = ''
         },
+        onShow () {},
+        onHide () {}
+      })
+    },
+    validateNumber (dateString) {
+      if(!_.isString(dateString)) {
+        return {code:-1,msg:"dateString is not string"}
+      }
+      if(dateString.length === 0) {
+        return {code:-1,msg:"waitting for input data"}
+      }
+      for(let i =0; i < dateString.length; i++) {
+        let item = dateString[i]
+        if(!_.isNumber(parseInt(item))) {
+          return {code:-1,msg:"error parse number index:" +i +",dateString is " + dateString}
+        }
+      }
+      return {code:0,msg:"success"}
+    },
+    compulute (arrs, recursion) {
+      if(!recursion) {
+        let c = (arrs.reduce((a,b) => a+b))
+        return c % 8 === 0?8:(c % 8)
+      }
+      let midRet = arrs.reduce((a,b) => a+b)
+      let arr = _.toArray(midRet.toString()).map(_.toNumber)
+      if(arr.length > 1) {
+        return this.compulute(arr,true)
+      }
+      return arr[0] >= 9?arr[0] - 8 :arr[0]
+    },
+    actionMethod (dateTime,recursion) {
+      let validateRet = this.validateNumber(dateTime)
+      if(validateRet.code !== 0) {
+        this.showMessage(validateRet.msg)
+        return -1
+      }
+      let dataItems = _.toArray(dateTime).map(_.toNumber)
+      return this.compulute(dataItems,recursion)
+    },
+    doAtction (recursion) {
+      let dateString = this.datatime.replace(/-/g,'')
+      if(!dateString) {
+        return this.showMessage("请输入生日")
+      }
+      let retNumber = this.actionMethod(dateString,recursion)
+      if(recursion) {
+        this.second = retNumber
+      }else {
+        this.first = retNumber
+      }
+    },
+    showMessage (message) {
+      this.$vux.alert.show({
+        title: '',
+        content: message,
         onShow () {},
         onHide () {}
       })
