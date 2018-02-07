@@ -17,12 +17,12 @@
     <div class="flex-demo"  style="margin-left:50px;margin-right:50px"> <x-button type="default" plain @click.native="showPlugin" style=" background: #ffffff;opacity:0.5;">{{datatime==''?'选择生日':datatime}}</x-button> </div>
   <div style="top:10">
     <grid >
-      <grid-item link="" style="border-bottom: 0px ">
+      <grid-item  style="border-bottom: 0px ">
       </grid-item>
       <grid-item label="">
           <img src="/static/images/logo.png" style="heigth:100%;width:100%;border-bottom: 0px">
       </grid-item>
-      <grid-item link="">
+      <grid-item >
       </grid-item>
     </grid>
     <grid>
@@ -38,7 +38,7 @@
       <grid-item  label="">
           <img src="/static/images/shuce.png" style="heigth:100%;width:100%;border-bottom: 0px" @click="doAtction(false)">
       </grid-item>
-      <grid-item link="">
+      <grid-item >
       </grid-item>
     </grid>
     <grid>
@@ -48,13 +48,13 @@
         </div> 
     </grid>
     <grid>
-      <grid-item link="" style="border-bottom: 0px ">
+      <grid-item  style="border-bottom: 0px ">
        <!--  <img slot="icon" src="../assets/grid_icon.png"> -->
       </grid-item>
       <grid-item  label="" >
           <img src="/static/images/bggua.png" style="heigth:100%;width:100%;border-bottom: 0px" @click="doAtction(true)">
       </grid-item>
-      <grid-item link="">
+      <grid-item >
       </grid-item>
     </grid>
     </div>
