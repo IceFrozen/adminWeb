@@ -11,7 +11,6 @@
       </grid-item>
     </grid> -->
       <!--  <x-button type="default" plain @click.native="showPlugin">选择生日</x-button> -->
-    <div style="height:25px"></div>
    <flexbox style="">
       <flexbox-item ><div class="flex-demo" style="margin-top:50px"></div></flexbox-item>
     </flexbox>
@@ -90,6 +89,8 @@ export default {
         confirmText: '确定',
         format: 'YYYY年MM月DD日',
         value: '2017-05-20',
+        minYear:1970,
+        maxYear:2100,
         onConfirm (val) {
           self.datatime = val
           self.first = ''
