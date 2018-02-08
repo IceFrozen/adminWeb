@@ -7,27 +7,27 @@
         <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active" >
           <div class="vux-1px-r cbox-inner">
           <!--  style="background-color:#f3f3f3" -->
-           <!--  <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
-             <!--  <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;"> -->
-             <router-link to="/shuce/NumberTool" style="color: #000000"><i class="fa fa-heartbeat fa-5x"></i></router-link>
+          <!--   <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
+             
+             <router-link to="/shuce/NumberTool" style="color: #000000"> <img src="/static/images/bggua.png" style="width:48.1%; overflow:hidden;"><!-- <i class="fa fa-heartbeat fa-5x"></i> --></router-link>
             <br>
-            <span :style="{fontSize: '12px' }">数测工具</span> 
+            <span :style="{fontSize: '12px' }">数测人生</span> 
           </div>
         </flexbox-item>
         <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
           <div class="vux-1px-r cbox-inner" >
             <!--  <router-link to="home/yixue" style="color: #000000"></router-link> -->
-             <i class="fa fa-volume-up fa-5x"></i>
+             <i class="fa fa-heartbeat fa-5x" style="width:100%;overflow:hidden;"></i>
             <br>
-            <span :style="{fontSize: '12px' }">暂未开发</span>
+            <span :style="{fontSize: '12px' }">敬请期待</span>
           </div>
         </flexbox-item> 
         <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
           <div class="vux-1px-r cbox-inner" >
             <!--  <router-link to="home/yixue" style="color: #000000"></router-link> -->
-             <i class="fa fa-volume-up fa-5x"></i>
+             <i class="fa fa-heartbeat fa-5x" style="width:100%;overflow:hidden;"></i>
             <br>
-            <span :style="{fontSize: '12px' }">暂未开发</span>
+            <span :style="{fontSize: '12px' }">敬请期待</span>
           </div>
         </flexbox-item>
         <!--   <flexbox-item :span="1/3"  key="aaaa" class="cbox vux-1px-t vux-tap-active">
@@ -93,27 +93,27 @@ export default {
         {
           url:'javascript:',
           img:"static/images/5.jpg",
-          title:"易道洗心"
+          title:""
         },
         {
           url:'javascript:',
           img:"static/images/2.jpg",
-          title:"中医养心"
+          title:""
         },
         {
           url:'javascript:',
           img:"static/images/1.jpg",
-          title:"儒家正心"
+          title:""
         },
         {
           url:'javascript:',
           img:"static/images/4.jpg",
-          title:"道家静心"
+          title:""
         },
         {
           url:'javascript:',
           img:"static/images/3.jpg",
-          title:"禅宗明心"
+          title:""
         }
       ],
       imgData:"static/images/ecoode.jpg",
