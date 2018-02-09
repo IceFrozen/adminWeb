@@ -5,32 +5,49 @@
       <div slot="content" class="card-demo-flex card-demo-content01" >
         <flexbox :gutter="0">
         <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active" >
-          <div class="vux-1px-r cbox-inner">
+          <div class="vux-1px-r cbox-inner" style="height:100%">
           <!--  style="background-color:#f3f3f3" -->
           <!--   <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
-             
-             <router-link to="/shuce/NumberTool" style="color: #000000"> <img src="/static/images/bggua.png" style="width:48.1%; overflow:hidden;"><!-- <i class="fa fa-heartbeat fa-5x"></i> --></router-link>
+             <router-link to="/shuce/NumberTool" style="color: #000000"> <img src="/static/images/bggua.png" style="width:60px; overflow:hidden;"><!-- <i class="fa fa-heartbeat fa-5x"></i> --></router-link>
             <br>
-            <span :style="{fontSize: '12px' }">数测人生</span> 
+            <span :style="{fontSize: '12px' }">数策人生</span> 
           </div>
         </flexbox-item>
-        <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
-          <div class="vux-1px-r cbox-inner" >
-            <!--  <router-link to="home/yixue" style="color: #000000"></router-link> -->
-             <i class="fa fa-heartbeat fa-5x" style="width:100%;overflow:hidden;"></i>
+         <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active" >
+          <div class="vux-1px-r cbox-inner" style="height:100%">
+          <!--  style="background-color:#f3f3f3" -->
+          <!--   <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
+             <img src="/static/images/buguadiable.png" style="width:60px; overflow:hidden;" disabled='true'><!-- <i class="fa fa-heartbeat fa-5x"></i> -->
+            <br>
+            <span :style="{fontSize: '12px' }">敬请期待</span> 
+          </div>
+        </flexbox-item>
+         <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active" >
+          <div class="vux-1px-r cbox-inner" style="height:100%">
+          <!--  style="background-color:#f3f3f3" -->
+          <!--   <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
+             <img src="/static/images/buguadiable.png" style="width:60px; overflow:hidden;"><!-- <i class="fa fa-heartbeat fa-5x"></i> -->
+            <br>
+            <span :style="{fontSize: '12px' }">敬请期待</span> 
+          </div>
+        </flexbox-item>
+       <!--   <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
+          <div class="vux-1px-r cbox-inner" style="height:100%">
+            <router-link to="home/yixue" style="color: #000000"></router-link> 
+             <i class="fa fa-heartbeat fa-5x"  style="width:127px; overflow:hidden;"></i>
             <br>
             <span :style="{fontSize: '12px' }">敬请期待</span>
           </div>
         </flexbox-item> 
         <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active">
           <div class="vux-1px-r cbox-inner" >
-            <!--  <router-link to="home/yixue" style="color: #000000"></router-link> -->
-             <i class="fa fa-heartbeat fa-5x" style="width:100%;overflow:hidden;"></i>
+             <router-link to="home/yixue" style="color: #000000"></router-link>
+             <i class="fa fa-heartbeat fa-5x" style="width:60px;overflow:hidden;"></i>
             <br>
             <span :style="{fontSize: '12px' }">敬请期待</span>
           </div>
         </flexbox-item>
-        <!--   <flexbox-item :span="1/3"  key="aaaa" class="cbox vux-1px-t vux-tap-active">
+         <flexbox-item :span="1/3"  key="aaaa" class="cbox vux-1px-t vux-tap-active">
           <div class="vux-1px-r cbox-inner">
               <img src="./qrbg.png" style="width:30%;border-radius:50%; overflow:hidden;">
              <i class="fa fa-camera-retro fa-4x"></i>
