@@ -89,8 +89,8 @@ export default {
         confirmText: '确定',
         format: 'YYYY年MM月DD日',
         value: '2017-05-20',
-        minYear:1970,
-        maxYear:2100,
+        minYear:1930,
+        maxYear:2030,
         onConfirm (val) {
           self.datatime = val
           self.first = ''
