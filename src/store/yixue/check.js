@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import _ from 'lodash'
+
+const getQuestionData = require("../../api").getQuestion
+
 export default {
   state: {
     id: null,
@@ -41,18 +44,9 @@ export default {
     }
   },
   actions: {
-    async getQuestion ({commit, rootStore,dispatch}, userinfo) {
-      try{
-        commit('updateLoadingStatus', {isLoading: true})
-        let AskInfo = (await Vue.api.post("/Questions/getQuestion")).data
-        commit("GET_INFO", AskInfo.Ask)
-        // console.log("this is AskInfo", AskInfo)
-        commit('updateLoadingStatus', {isLoading: false})
-        return true
-      }catch(e) {
-        commit('updateLoadingStatus', {isLoading: false})
-        return false
-      }
+    getQuestion ({commit, rootStore,dispatch}, userinfo) {
+      let AskInfo = getQuestionData().data 
+      return AskInfo
     },
     complateGroupFen (store, {groupId,questioId,selectId}) {
       store.commit("FenShuw", {groupId,questioId,selectId})

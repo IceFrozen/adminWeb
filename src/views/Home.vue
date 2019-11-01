@@ -8,7 +8,6 @@
       :title="title"
       :transition="headerTransition"
       @on-click-title="scrollTop"></x-header> -->
-
       <transition :name="'vux-pop-' + (direction === 'forward' ? 'in' : 'out')">
         <router-view class="router-view"></router-view>
       </transition>

@@ -10,8 +10,8 @@ import NumberTool from '@/views/shuce/NumberTool'
 // import PlayerDetails from '@/views/player/Details'
 // import InputPlayer from '@/views/player/Input'
 import AdminDashboard from '@/views/admin/Dashboard'
-// import YiXueDashboard from '@/views/yixue/index'
-// import CheckList from '@/views/yixue/check'
+import YiXueDashboard from '@/views/yixue/index'
+import CheckList from '@/views/yixue/check'
 import AlertCheck from '@/views/AlertCheck'
 Vue.use(Router)
 
@@ -40,27 +40,30 @@ export default new Router({
       component: AdminDashboard
     }, {
       path: 'yixue',
-      component: function (resolve) {
-        require(['../views/yixue/index'], resolve)
-      }
+      component:YiXueDashboard
+      // component: function (resolve) {
+      //   require(['../views/yixue/index'], resolve)
+      // }
     }, {
       path: 'AlertCheck',
       component: AlertCheck,
       name:"AlertCheck"
     }, {
       path: 'checkMyself',
-      component: function (resolve) {
-        require(['../views/yixue/check'], resolve)
-      }
+      component:CheckList
+      // component: function (resolve) {
+      //   require(['../views/yixue/check'], resolve)
+      // }
     }, {
       path: 'knowMyself',
-      component: function (resolve) {
-        require(['../views/yixue/know'], resolve)
-      }
+      component:CheckList
+      // component: function (resolve) {
+      //   require(['../views/yixue/check'], resolve)
+      // }
     }, {
       path: 'mark',
       component: function (resolve) {
-        require(['../views/yixue/mark'], resolve)
+        require(['../views/yixue/check'], resolve)
       }
     }]
   }, {

@@ -17,16 +17,16 @@
           <div class="vux-1px-r cbox-inner" style="height:100%">
           <!--  style="background-color:#f3f3f3" -->
           <!--   <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
-             <img src="/static/images/buguadiable.png" style="width:60px; overflow:hidden;" disabled='true'><!-- <i class="fa fa-heartbeat fa-5x"></i> -->
+             <router-link to="/home/checkMyself" style="color: #000000"> <img src="/static/images/bggua.png" style="width:60px; overflow:hidden;"><!-- <i class="fa fa-heartbeat fa-5x"></i> --></router-link>
             <br>
-            <span :style="{fontSize: '12px' }">敬请期待</span> 
+            <span :style="{fontSize: '12px' }">体质自查</span> 
           </div>
         </flexbox-item>
          <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active" >
           <div class="vux-1px-r cbox-inner" style="height:100%">
           <!--  style="background-color:#f3f3f3" -->
           <!--   <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
-             <img src="/static/images/buguadiable.png" style="width:60px; overflow:hidden;"><!-- <i class="fa fa-heartbeat fa-5x"></i> -->
+             <img src="/static/images/buguadiable.png" style="width:60px; overflow:hidden;" disabled='true'><!-- <i class="fa fa-heartbeat fa-5x"></i> -->
             <br>
             <span :style="{fontSize: '12px' }">敬请期待</span> 
           </div>

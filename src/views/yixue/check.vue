@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100px">
+  <div style="height: 100%">
     <blur :blur-amount=10 :url="background" :height="120">
       <p class="center"><img :src="url"></p>
       <p class="center_2">{{AskInfo.name}}</p>
@@ -7,12 +7,12 @@
     <cell  disabled readonly  primary="content" value-align="left" style='display:block;word-break: break-all;word-wrap: break-word;'>
     {{AskInfo.desc}}
     </cell>
-    <div v-for = "groupInfo in Groups">
+    <div v-for = "groupInfo in Groups" :key="groupInfo.index">
       <!-- <p class="card-padding" style="align:center;font-size:15px;">第一部分</p> -->
        <group>
           <p class="card-padding" style="align:center;font-size:15px;">{{groupInfo.name}}</p>
        </group>
-      <group   v-for ="question in groupInfo.questions" :title="question.index +'、'+ question.name" titleColor="#000" labelAlign="left" style='display:block;word-break: break-all;word-wrap: break-word;' >
+      <group   v-for ="question in groupInfo.questions" :key="question.questioId" :title="question.questioId +'、'+ question.name" titleColor="#000" labelAlign="left" style='display:block;word-break: break-all;word-wrap: break-word;' >
         <radio 
         :selected-label-style="{color: '#FF9900'}" 
         :options="question.selects" 
@@ -57,8 +57,11 @@
   </div>
 </template>
 
+
 <script>
 import { mapState, mapActions } from 'vuex'
+
+const data = require('../../api').getQuestion().data
 // import _ from 'lodash'
 import { Flexbox, FlexboxItem, Blur, Group, Cell, Card, Radio, Divider, XButton } from 'vux'
 export default {
@@ -73,23 +76,18 @@ export default {
     Divider,
     XButton
   },
-  async mounted () {
-    let ret = await this.getQuestion()
-    if(!ret) {
-      this.$vux.alert.show({
-        content: `问题不存在`
-      })
-      return this.$router.go(-1)
-    }
+  mounted () {
+    console.log("mounted")
+    this.Ask = this.getQuestion().data
+    this.selected = {}
   },
   computed: {
-    ...mapState({
-      AskInfo: state => state.user.Check.AskInfo,
-      Groups: state => state.user.Check.Groups
-    }),
+    Groups () {
+      return this.AskInfo.groups
+    },
     total  () {
       let total = 0
-      this.Groups.map(g => {
+      this.AskInfo.groups.map(g => {
         total += g.fen
       })
       return total
@@ -99,29 +97,67 @@ export default {
   methods: {
     ...mapActions(['getQuestion',"complateGroupFen","submitCheck"]),
     changeRadio (a , b) {
+      console.log(a,b )
       let aArray = a.split('_')
-      let groupId = aArray[0]
-      let selectId = a
-      let questioId = aArray[0] +"_" +aArray[1]
-      this.complateGroupFen({groupId,questioId,selectId})
+      let groupId = _.toNumber(aArray[0])
+      let questioId =_.toNumber(aArray[1])
+      let source = _.toNumber(aArray[2])
+      console.log(this.AskInfo)
+      let group = _.find(this.AskInfo.groups,{groupId:groupId})
+      console.log("group", group)
+      let question = _.find(group.questions,{questioId:questioId})
+      console.log(question)
+      let select = _.find(question.selects,{key:a})
+      if(!select || !group || !question) {
+        return
+      }
+      question.source =  source
+      console.log(question,"question")
+      let tmp = 0
+      
+      group.questions.map(q => {
+        console.log("qsource", q.source)
+        if (_.isNumber(q.source)) {
+          tmp += _.isNumber(q.source)
+        }
+      })
+      console.log("tmp", tmp)
+      this.selected[groupId + "-" + questioId] = true
+      group.fen = tmp
     },
-    async submitInfo () {
+    submitInfo () {
       // 提交信息
       // 判断有没有填入的
-      for(let i =0; i < this.Groups.length; i++) {
-        let group = this.Groups[i]
-        for(let j = 0; j < group.questions.length; j++) {
-          let q = group.questions[j]
-          if(!q.select) {
-            return this.$vux.alert.show({
-              content: `第${group.index}组的第${q.index}题没有填写`
-            })
-          }
-        }
-      }
+      // for(let i =0; i < this.AskInfo.groups.length; i++) {
+      //   let group = this.AskInfo.groups[i]
+      //   for(let j = 0; j < group.questions.length; j++) {
+      //     let q = group.questions[j]
+      //     console.log("q", q)
+      //     if(!this.selected[group.groupId + '-' + q.questioId]) {
+      //       return this.$vux.alert.show({
+      //         content: `第${group.groupId}组的第${q.questioId}题没有填写`
+      //       })
+      //     }
+      //   }
+      // }
       // 提交表单
-      let ret = await this.submitCheck()
-      this.$router.push({name: 'AlertCheck', params: {ret}})
+      //let ret = await this.submitCheck()
+    let askInfo = {
+        isSucc:0,
+        total:0,
+        msg:"success",
+        group:[]
+      }
+      let tmp = 0
+      this.AskInfo.groups.map(g => {
+        tmp += g.fen
+        askInfo.group.push(g.fen)
+      })
+      askInfo.total = tmp
+
+
+
+      this.$router.push({name: 'AlertCheck', params: {askInfo}})
     }
   },
   data () {
@@ -131,6 +167,9 @@ export default {
       //   'https://o3e85j0cv.qnssl.com/waterway-107810__340.jpg',
       //   'https://o3e85j0cv.qnssl.com/hot-chocolate-1068703__340.jpg'
       // ],
+      AskInfo: data.Ask,
+      selected:{},
+      // Groups: data.Ask.groups,
       url: 'static/images/logo.jpg',
       background: 'static/images/bg.jpg'
     }

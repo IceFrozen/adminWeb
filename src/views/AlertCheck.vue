@@ -12,7 +12,8 @@ export default {
     XButton
   },
   mounted () {
-    this.ret = this.$route.params.ret
+    this.ret = this.$route.params.askInfo
+    console.log("this.$route.params", this.$route.params)
     if(this.ret.isSucc === 0) {
       this.icon = 'success'
     }else{
@@ -25,8 +26,8 @@ export default {
         text:"总分：" + total + " 分"
       })
     //     return {isSucc:0,msg:"success",total:total,scores:scoures}
-      for(let i = 0; i < this.ret.scores.length; i++) {
-        let source = this.ret.scores[i]
+      for(let i = 0; i < this.ret.group.length; i++) {
+        let source = this.ret.group[i]
         this.buttons.push({
           type:"default",
           text:"第"+(i+1)+"部分：" + source + " 分"
@@ -36,7 +37,7 @@ export default {
     this.buttons.push({
       type: 'default',
       text: '返回',
-      link: '/home/yixue'
+      link: '/'
     })
   },
   methods: {
@@ -50,7 +51,8 @@ export default {
     return {
       description: 'msg description',
       icon: '',
-      ret:null,
+      ret:{msg:"",total:0, group:[]},
+      msg:"",
       buttons: []
     }
   }
