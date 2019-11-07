@@ -19,7 +19,7 @@
           <!--   <icon type="success" style="width:50%; height:50%; border-radius:50%; overflow:hidden;"></icon> -->
              <router-link to="/home/checkMyself" style="color: #000000"> <img src="/static/images/bggua.png" style="width:60px; overflow:hidden;"><!-- <i class="fa fa-heartbeat fa-5x"></i> --></router-link>
             <br>
-            <span :style="{fontSize: '12px' }">体质自查</span> 
+            <span :style="{fontSize: '12px' }">妙心圣手</span> 
           </div>
         </flexbox-item>
          <flexbox-item :span="1/3" class="cbox vux-1px-t vux-tap-active" >

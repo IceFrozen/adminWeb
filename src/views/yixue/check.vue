@@ -97,31 +97,32 @@ export default {
   methods: {
     ...mapActions(['getQuestion',"complateGroupFen","submitCheck"]),
     changeRadio (a , b) {
-      console.log(a,b )
+      //console.log(a,b )
       let aArray = a.split('_')
       let groupId = _.toNumber(aArray[0])
       let questioId =_.toNumber(aArray[1])
       let source = _.toNumber(aArray[2])
-      console.log(this.AskInfo)
+      //console.log(this.AskInfo)
       let group = _.find(this.AskInfo.groups,{groupId:groupId})
-      console.log("group", group)
+      //console.log("group", group)
       let question = _.find(group.questions,{questioId:questioId})
-      console.log(question)
+      //console.log(question)
       let select = _.find(question.selects,{key:a})
       if(!select || !group || !question) {
         return
       }
       question.source =  source
-      console.log(question,"question")
+      //console.log(question,"question","source", source)
       let tmp = 0
       
       group.questions.map(q => {
-        console.log("qsource", q.source)
+        //console.log("qsource", q)
         if (_.isNumber(q.source)) {
-          tmp += _.isNumber(q.source)
+          tmp += _.toNumber(q.source)
+          //console.log(tmp,'tmp')
         }
       })
-      console.log("tmp", tmp)
+      //console.log("tmp", tmp)
       this.selected[groupId + "-" + questioId] = true
       group.fen = tmp
     },
